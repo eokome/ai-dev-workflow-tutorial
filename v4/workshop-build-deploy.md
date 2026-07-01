@@ -9,13 +9,12 @@
 ## Table of contents
 
 - [Workshop agenda](#workshop-agenda)
-- [Section 1: Set up your task board (~5 min)](#section-1-set-up-your-task-board-5-min)
+- [Section 1: Set up your task board from the PRD (~15 min)](#section-1-set-up-your-task-board-from-the-prd-15-min)
 - [Section 2: Brainstorm and plan (~30 min)](#section-2-brainstorm-and-plan-30-min)
   - [2.1 Create v4/CLAUDE.md](#21-create-v4claudemd)
   - [2.2 Create the feature branch](#22-create-the-feature-branch)
-  - [2.3 Read the PRD](#23-read-the-prd)
-  - [2.4 Brainstorm and plan with one prompt](#24-brainstorm-and-plan-with-one-prompt)
-- [Section 3: Turn your plan into tasks (~10 min)](#section-3-turn-your-plan-into-tasks-10-min)
+  - [2.3 Brainstorm and plan with one prompt](#23-brainstorm-and-plan-with-one-prompt)
+- [Section 3: Confirm the plan covers your milestones (~5 min)](#section-3-confirm-the-plan-covers-your-milestones-5-min)
 - [Section 4: Build the dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
   - [4.1 Implement the first milestone](#41-implement-the-first-milestone)
   - [4.2 Commit, push, and update TASKS.md](#42-commit-push-and-update-tasksmd)
@@ -44,11 +43,11 @@
 
 By the end of this workshop, you'll have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you'll have:
 
-- Set up an in-repo `TASKS.md` board with a shared Definition of Done
+- Set up an in-repo `TASKS.md` board of milestones drawn from the PRD, with a shared Definition of Done
 - Generated Superpowers artifacts: a design document and an implementation plan
-- Turned your plan into trackable tasks and moved each one from To Do to Done
+- Moved each milestone from To Do to Done as you built
 - Built a working Streamlit dashboard with AI-assisted coding
-- Committed and pushed code to GitHub with traceability from each task to its commit
+- Committed and pushed code to GitHub with traceability from each milestone to its commits
 - Deployed a live dashboard accessible by anyone with the URL
 
 ---
@@ -83,15 +82,15 @@ If any command fails, return to the [pre-work setup guide](pre-work-setup.md) an
 This is the workflow used at technology companies worldwide. Today you'll experience the entire cycle, from specification to deployment.
 
 ```
-┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────┐    ┌────────┐
-│   PRD   │ -> │ brainstorming│ -> │writing-plans │ -> │ TASKS.md │ -> │  Code  │
-│(written)│    │ (design doc) │    │ (impl plan)  │    │(tracking)│    │(Claude)│
-└─────────┘    └──────────────┘    └──────────────┘    └──────────┘    └────────┘
-                                                                            │
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌──────────────────────────────┐
-│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
-│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch          │
-└─────────┘    └──────────┘    └─────────┘    └──────────────────────────────┘
+┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌────────┐
+│   PRD   │ -> │   TASKS.md   │ -> │ brainstorming│ -> │writing-plans │ -> │  Code  │
+│(written)│    │ (milestones) │    │ (design doc) │    │ (impl plan)  │    │(Claude)│
+└─────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └────────┘
+                                                                              │
+┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────────────────────────────┐
+│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit) │
+│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch            │
+└─────────┘    └──────────┘    └─────────┘    └────────────────────────────────┘
 ```
 
 Each box in this diagram is a distinct stage you'll complete today. The left-to-right flow on the top row moves from planning to execution. The right-to-left flow on the bottom row moves from saving your work to making it publicly available. Together, they form a closed loop: requirements become running software that stakeholders can access.
@@ -100,7 +99,7 @@ Each box in this diagram is a distinct stage you'll complete today. The left-to-
 
 ---
 
-## Section 1: Set up your task board (~5 min)
+## Section 1: Set up your task board from the PRD (~15 min)
 
 ### Tracking work in a file
 
@@ -130,7 +129,7 @@ Web-app tracker (e.g. Jira)          File-based tracker (TASKS.md)
 > - **Diffable and reviewable.** Changes to tasks show up in your commits and diffs like any other file.
 > - **It works offline and travels with the project.** The same file works in Claude Code, Cursor, or any editor.
 >
-> This is a real, current industry pattern, not a training-wheels version. Teams building with AI coding agents increasingly keep their task lists in the repo so the agent can read and update them directly. (Tools like [Backlog.md](https://github.com/MrLesk/Backlog.md) and [spec-kit](https://github.com/github/spec-kit) formalize the same idea at larger scale -- more on that at the end.)
+> This is a real, current industry pattern, not a training-wheels version. Teams building with AI coding agents increasingly keep their task lists in the repo so the agent can read and update them directly. (The open-source tool [Backlog.md](https://github.com/MrLesk/Backlog.md) formalizes the same idea at larger scale.)
 
 ### Two kinds of "to-do list" (don't mix them up)
 
@@ -156,35 +155,58 @@ As you work, Claude Code shows its own live checklist while it's thinking -- you
 
    By default, Claude Code keeps its responses short. Setting the style to "explanatory" tells Claude to explain what it's doing and why, which helps you learn from its work instead of just receiving code. This is especially useful while you're still learning the workflow.
 
-3. **Create the task board.** Ask Claude Code to create the file for you:
+3. **Read the PRD first.** Your task board should reflect what the project needs to deliver -- and that's spelled out in the product requirements document.
+
+   > **What is a PRD?** A PRD (Product Requirements Document) is a written description of what you're building and why. It defines the problem, the users, the features, and what success looks like. In professional settings, a PRD is written before any code.
+
+   Open the [PRD](../prd/ecommerce-analytics.md) and skim it (in your browser, or open `prd/ecommerce-analytics.md` in Cursor). Look at two sections in particular: **Acceptance Criteria** and **Timeline and Milestones**. The PRD already sketches the deliverables your board will track -- you're not inventing them from scratch.
+
+4. **Create your task board from the PRD.** Ask Claude Code to draft it:
 
    ```
-   Create a TASKS.md file in the project root with three sections -- "To Do", "In Progress", and "Done" -- all empty for now. Above them, add a "Definition of Done" checklist that applies to every task: acceptance criteria met; app runs locally with `streamlit run app.py`; changes committed with the task ID in the message. Leave a short note at the top explaining that this file tracks all work for the dashboard.
+   Read @prd/ecommerce-analytics.md. Create a TASKS.md file in the project root with:
+   - a short note at the top saying this file tracks all work for the dashboard
+   - a "Definition of Done" checklist that applies to every milestone: acceptance criteria met; app runs locally with `streamlit run app.py`; changes committed with the milestone ID in the message
+   - a "To Do" section with 4-8 milestones based on the PRD's deliverables and its Milestones table, numbered TASK-1, TASK-2, and so on, each with a one-line description and 1-3 acceptance criteria as checkboxes
+   - empty "In Progress" and "Done" sections
    ```
 
-   Claude creates `TASKS.md`. Open it in Cursor and read it. It should look roughly like this:
+   Claude reads the PRD and drafts the board. Open `TASKS.md` in Cursor and read it. It should look roughly like this:
 
    ```markdown
    # Sales Dashboard -- Tasks
 
    This file tracks all work for the e-commerce sales dashboard.
-   Each task moves through To Do -> In Progress -> Done.
+   Each milestone moves through To Do -> In Progress -> Done.
 
-   ## Definition of Done (applies to every task)
+   ## Definition of Done (applies to every milestone)
    - [ ] Acceptance criteria met
    - [ ] App runs locally with `streamlit run app.py`
-   - [ ] Changes committed with the task ID in the message
+   - [ ] Changes committed with the milestone ID in the message
 
    ## To Do
+   - [ ] **TASK-1 -- Project setup and data loading**
+     - [ ] App runs with `streamlit run app.py` and shows a title
+     - [ ] Loads `data/sales-data.csv`; handles a missing file cleanly
+   - [ ] **TASK-2 -- KPI scorecards**
+     - [ ] Total Sales and Total Orders shown as formatted metrics
+   - [ ] **TASK-3 -- Sales trend chart**
+     - [ ] Line chart of sales over time renders from the data
+   - [ ] **TASK-4 -- Category and region breakdowns**
+     - [ ] Bar charts for sales by category and by region, sorted by value
+   - [ ] **TASK-5 -- Test and deploy**
+     - [ ] Dashboard runs without errors and is deployed to a public URL
 
    ## In Progress
 
    ## Done
    ```
 
-   > **What is a Definition of Done?** It's a quality checklist that applies to *every* task, no matter what the task is. Individual tasks each get their own **acceptance criteria** (the specific thing that task must do). The Definition of Done is the shared bar underneath all of them -- "before I call anything done, these things are always true." Professional teams agree on a Definition of Done so "done" means the same thing to everyone. You'll fill the To Do section with real tasks in Section 3.
+   Your milestones may differ a little, and that's fine. Read them against the PRD and adjust anything that doesn't match what you want to build. You're aiming for a short list you could read aloud in a status update -- the *what*, not the *how*. (Superpowers works out the *how* in the next section.)
 
-**Checkpoint:** `TASKS.md` exists in your project root with a Definition of Done and empty To Do / In Progress / Done sections.
+   > **What is a Definition of Done?** It's a quality checklist that applies to *every* milestone, no matter what it is. Each milestone also gets its own **acceptance criteria** (the specific thing that milestone must do). The Definition of Done is the shared bar underneath all of them -- "before I call anything done, these things are always true." Professional teams agree on a Definition of Done so "done" means the same thing to everyone.
+
+**Checkpoint:** `TASKS.md` exists in your project root with a Definition of Done and 4-8 milestones (TASK-1, TASK-2, ...) in the To Do section, drafted from the PRD.
 
 ---
 
@@ -256,19 +278,9 @@ Your `main` branch stays clean and stable while you work on the feature branch. 
 
 **Checkpoint:** `git branch --show-current` returns `feature/sales-dashboard`.
 
-### 2.3 Read the PRD
+### 2.3 Brainstorm and plan with one prompt
 
-> **What is a PRD?** A PRD (Product Requirements Document) is a written description of what you're building and why. It defines the problem, the intended users, the features, and what success looks like. In professional settings, a PRD is written before any code, and writing one before you start coding will save your team from scope confusion later.
-
-Open the [PRD](../prd/ecommerce-analytics.md) and skim it. You can read it in your browser or open `prd/ecommerce-analytics.md` in Cursor. You don't need to memorize anything; just get a feel for what the dashboard should do, what data you're working with, and what the expected deliverables are.
-
-This matters because brainstorming is about to ask you questions. You'll make better choices if you already know what you're building.
-
-**Checkpoint:** You've skimmed the PRD and have a general sense of the project scope.
-
-### 2.4 Brainstorm and plan with one prompt
-
-This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan. You'll see Claude announce each skill switch in the output.
+This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You already know the *what* -- the milestones on your board. Now you give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan for the *how*. You'll see Claude announce each skill switch in the output.
 
 1. Start Claude Code from your project directory:
 
@@ -278,10 +290,10 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
    Confirm `You have superpowers` appears in the banner. If it doesn't, see the troubleshooting section.
 
-2. Send Claude this prompt:
+2. Send Claude this prompt. Notice it points at both the PRD and your milestones, so the plan is built to cover them:
 
    ```
-   Help me design and plan the e-commerce sales dashboard described in @prd/ecommerce-analytics.md.
+   Help me design and plan the e-commerce sales dashboard described in @prd/ecommerce-analytics.md. I'm tracking these milestones in @TASKS.md -- structure the plan so its steps cover each one.
    ```
 
 3. Watch what happens:
@@ -331,54 +343,55 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
 ---
 
-## Section 3: Turn your plan into tasks (~10 min)
+## Section 3: Confirm the plan covers your milestones (~5 min)
 
-### Connecting planning to tracking
+### Two artifacts, two altitudes
 
-You now have an implementation plan from writing-plans. It's a long, detailed list of small engineering steps in the order Claude should build them. That level of detail is exactly what Claude needs to write code, but it's too fine-grained to *track* -- nobody reports status as "step 14 of 37 done."
+You now have two planning documents. Being clear on how they relate matters -- this is where students most often get confused.
 
-So you'll create a second, coarser view: a handful of **milestones** in `TASKS.md`. Each milestone groups several plan steps into one deliverable a person would recognize -- "KPI scorecards," "Deploy." This is the difference between an engineer's checklist and the board a manager watches.
+- **`TASKS.md`** holds your **milestones**: the coarse deliverables you drafted from the PRD in Section 1. This is the *what*, and the board you track status on.
+- **The implementation plan** (`docs/superpowers/plans/...`) holds the **detailed steps** Superpowers just produced. This is the *how*, and the checklist Claude builds from.
 
 > **The two artifacts, and why they don't overlap:**
 >
-> | | Implementation plan | `TASKS.md` |
+> | | `TASKS.md` | Implementation plan |
 > |---|---|---|
-> | **Lives in** | `docs/superpowers/plans/` | project root |
-> | **Granularity** | Fine -- every engineering step | Coarse -- ~4-8 milestones |
-> | **Written/updated by** | Superpowers (`writing-plans`, then `executing-plans` checks steps off as it builds) | You, with Claude's help |
-> | **Answers** | "What's the next step to code?" | "What's the status of the dashboard?" |
-> | **Audience** | Claude (the builder) | You, your grader, a stakeholder |
+> | **Lives in** | project root | `docs/superpowers/plans/` |
+> | **Granularity** | Coarse -- ~4-8 milestones | Fine -- every engineering step |
+> | **Comes from** | the PRD, up front (Section 1) | brainstorming + the design doc (Section 2) |
+> | **Updated by** | you, with Claude's help | Superpowers (`executing-plans` checks steps off as it builds) |
+> | **Answers** | "What's the status of the dashboard?" | "What's the next step to code?" |
+> | **Audience** | you, your grader, a stakeholder | Claude (the builder) |
 >
-> The plan is the "how." `TASKS.md` is the "what and where-are-we." Claude builds from the plan; you track from the board. One milestone on the board covers several steps in the plan -- they're two zoom levels of the same work, not two copies of it.
+> `TASKS.md` is the "what and where-are-we." The plan is the "how." One milestone on your board covers several steps in the plan -- they're two zoom levels of the same work, not two copies of it. You track from the board; Claude builds from the plan.
 
 ```
-Implementation plan (detail)          TASKS.md (milestones)
-┌────────────────────────────┐        ┌────────────────────────────┐
-│ [x] scaffold app.py         │  ┐     │ TASK-1  Project + data      │
-│ [x] add requirements.txt    │  ├───> │         loading             │
-│ [x] load + validate CSV     │  ┘     ├────────────────────────────┤
-│ [ ] compute_total_sales +   │  ┐     │ TASK-2  KPI scorecards      │
-│     test                    │  ├───> │                             │
-│ [ ] render KPI metrics      │  ┘     ├────────────────────────────┤
-│ [ ] build trend chart       │  ────> │ TASK-3  Sales trend chart   │
-│ ...                         │        │ ...                         │
-└────────────────────────────┘        └────────────────────────────┘
-  Claude works step by step             You track milestone by milestone
+TASKS.md (your milestones)              Implementation plan (Claude's steps)
+┌────────────────────────────┐          ┌────────────────────────────┐
+│ TASK-1 Project + data      │ <──────  │ scaffold app.py             │
+│        loading             │ <──────  │ add requirements.txt        │
+│                            │ <──────  │ load + validate CSV         │
+├────────────────────────────┤          ├────────────────────────────┤
+│ TASK-2 KPI scorecards      │ <──────  │ compute_total_sales + test  │
+│                            │ <──────  │ render KPI metrics          │
+├────────────────────────────┤          ├────────────────────────────┤
+│ TASK-3 Sales trend chart   │ <──────  │ build trend chart           │
+│ ...                        │          │ ...                         │
+└────────────────────────────┘          └────────────────────────────┘
+  You set these (from the PRD)            Superpowers wrote these (the how)
 ```
 
-### 3.1 Create your milestones from the plan
+### 3.1 Check the plan lines up with your board
 
-1. In Claude Code, ask Claude to group the plan into a short list of milestones on the board:
+Because you pointed the planning prompt at your milestones, the plan should already cover them. Do a quick check, and record the mapping so each milestone points back to its plan steps.
+
+1. In Claude Code:
 
    ```
-   Read the implementation plan at @docs/superpowers/plans/<plan-file>.md and group its steps into 4-8 milestone tasks in the To Do section of TASKS.md. Number them TASK-1, TASK-2, and so on. For each milestone, add a one-line description, 1-3 acceptance criteria as checkboxes, and a note of which plan steps it covers. Don't copy every plan step -- keep it to milestones. Leave the Definition of Done unchanged.
+   Compare the implementation plan in @docs/superpowers/plans/ against the milestones in @TASKS.md. For each milestone, note which plan steps cover it by adding "(plan steps X-Y)" after the milestone title. Then tell me if any milestone has no plan steps behind it, or if the plan does something that isn't on my board.
    ```
 
-   Replace `<plan-file>` with the actual filename. To find it quickly, run `ls -t docs/superpowers/plans/ | head -1` in your terminal.
-
-   > **How does Claude update the board?** `TASKS.md` is just a file in your project, so Claude Code edits it the same way it edits any other file -- no connector, no login, no special tool. You'll see it announce the edit, and you can watch the file change in Cursor. That directness is the whole point of tracking work in the repo.
-
-2. Claude reads the plan and writes the milestones into `TASKS.md`. Open the file in Cursor and read it. The To Do section should now look something like this:
+2. Claude annotates each milestone and flags any gaps. Your To Do section should end up looking like this:
 
    ```markdown
    ## To Do
@@ -386,19 +399,17 @@ Implementation plan (detail)          TASKS.md (milestones)
      - [ ] App runs with `streamlit run app.py` and shows a title
      - [ ] Loads `data/sales-data.csv`; handles a missing file cleanly
    - [ ] **TASK-2 -- KPI scorecards** (plan steps 4-6)
-     - [ ] Shows Total Sales and Total Orders as formatted metrics
+     - [ ] Total Sales and Total Orders shown as formatted metrics
    - [ ] **TASK-3 -- Sales trend chart** (plan steps 7-9)
      - [ ] Line chart of sales over time renders from the data
    ...
    ```
 
-   The exact milestones depend on your plan. What matters is that you have a short, readable list -- each milestone with its own acceptance criteria and a pointer back to the plan steps it covers.
+3. If Claude flags a gap -- a milestone with no plan behind it, or plan work that maps to no milestone -- decide what to do: adjust a milestone, or ask Claude to extend the plan. It's normal for planning to surface something the PRD implied but didn't spell out.
 
-3. Read your milestones. If two feel like the same deliverable, ask Claude to merge them; if one is doing too much, split it. You're aiming for a list you could read aloud in a status update.
+**Checkpoint:** Every milestone in `TASKS.md` notes the plan steps that cover it, and there are no unexplained gaps between the board and the plan.
 
-**Checkpoint:** The To Do section of `TASKS.md` lists 4-8 milestones (TASK-1, TASK-2, ...), each with acceptance criteria and a note of the plan steps it covers.
-
-> **Pro Tip:** Notice the zoom levels. The PRD said "display Total Sales." The plan breaks that into steps ("compute total sales with a test," "render a metric component"). The board zooms back out to one milestone: "KPI scorecards." Same work, three altitudes -- requirement, engineering steps, trackable deliverable. Being able to move between them is a real skill.
+> **Pro Tip:** Notice the zoom levels. The PRD said "display Total Sales." The plan breaks that into steps ("compute total sales with a test," "render a metric component"). Your board zooms back out to one milestone: "KPI scorecards." Same work, three altitudes -- requirement, engineering steps, trackable deliverable. Being able to move between them is a real skill.
 
 ---
 
@@ -774,7 +785,7 @@ Before submitting, walk through every item below. Each category corresponds to a
 ## The complete workflow -- what you accomplished
 
 ```
-PRD [done] -> brainstorming [done] -> writing-plans [done] -> TASKS.md [done] -> Code [done] -> Commit [done] -> Push [done] -> Deploy [done] -> Live! [done]
+PRD [done] -> TASKS.md [done] -> brainstorming [done] -> writing-plans [done] -> Code [done] -> Commit [done] -> Push [done] -> Deploy [done] -> Live! [done]
 ```
 
 In this workshop, you practiced five professional skills:

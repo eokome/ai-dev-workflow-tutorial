@@ -59,23 +59,23 @@ The dashboard itself is straightforward. The point is the workflow you use to bu
 Every technology company uses a variation of this workflow. You'll experience the entire cycle:
 
 ```
-┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────┐    ┌────────┐
-│   PRD   │ -> │ brainstorming│ -> │writing-plans │ -> │ TASKS.md │ -> │  Code  │
-│(written)│    │ (design doc) │    │ (impl plan)  │    │(tracking)│    │(Claude)│
-└─────────┘    └──────────────┘    └──────────────┘    └──────────┘    └────────┘
-                                                                            │
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌──────────────────────────────┐
-│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
-│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch          │
-└─────────┘    └──────────┘    └─────────┘    └──────────────────────────────┘
+┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌────────┐
+│   PRD   │ -> │   TASKS.md   │ -> │ brainstorming│ -> │writing-plans │ -> │  Code  │
+│(written)│    │ (milestones) │    │ (design doc) │    │ (impl plan)  │    │(Claude)│
+└─────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └────────┘
+                                                                              │
+┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────────────────────────────┐
+│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit) │
+│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch            │
+└─────────┘    └──────────┘    └─────────┘    └────────────────────────────────┘
 ```
 
 1. **PRD** -- Start with a written specification of what to build
-2. **brainstorming** -- A Superpowers skill that asks clarifying questions and produces a design document
-3. **writing-plans** -- A Superpowers skill that turns the design into a bite-sized implementation plan
-4. **TASKS.md** -- Turn the plan into trackable tasks in a Markdown file in your repo
+2. **TASKS.md** -- Draft your milestones (the deliverables) from the PRD into a Markdown board in your repo
+3. **brainstorming** -- A Superpowers skill that asks clarifying questions and produces a design document
+4. **writing-plans** -- A Superpowers skill that turns the design into a bite-sized implementation plan covering your milestones
 5. **Code** -- Build the feature with Claude Code
-6. **Commit** -- Save your changes with a meaningful message linked to the task ID
+6. **Commit** -- Save your changes with a meaningful message linked to the milestone ID
 7. **Push** -- Upload your code to GitHub
 8. **Deploy** -- Make your dashboard publicly accessible
 
