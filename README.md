@@ -51,14 +51,14 @@ You'll set up the same tools that development teams use, then build a dashboard 
 
 ### Version 4 (current)
 
-Async pre-work + a 3-hour live workshop, using the Superpowers Claude Code plugin for skill-driven planning and an in-repo `TASKS.md` file for task tracking (no Jira account needed).
+Two self-paced parts -- setup, then build & deploy -- using the Superpowers Claude Code plugin for skill-driven planning and an in-repo `TASKS.md` file for task tracking (no Jira account needed).
 
-1. Start with [Pre-work: Setup](v4/pre-work-setup.md) -- accounts, tools, repo setup (70-100 min on your own)
-2. Then [Workshop: Build & Deploy](v4/workshop-build-deploy.md) -- design, plan, track, build, and deploy the dashboard (~3 hours, live)
+1. Start with [Part 1: Setup](v4/pre-work-setup.md) -- accounts, tools, repo setup (70-100 min, at your own pace)
+2. Then [Part 2: Build & Deploy](v4/workshop-build-deploy.md) -- design, plan, track, build, and deploy the dashboard (~3 hours, self-paced)
 
 ### Version 3 (previous)
 
-Same skill-driven workshop, but tracking work in Jira via the Atlassian MCP server instead of a `TASKS.md` file.
+The same skill-driven build as Version 4, but tracking work in Jira via the Atlassian MCP server instead of a `TASKS.md` file.
 
 1. Start with [Pre-work: Setup](v3/pre-work-setup.md) -- accounts, tools, repo setup (60-90 min on your own)
 2. Then [Workshop: Build & Deploy](v3/workshop-build-deploy.md) -- design, plan, build, and deploy the dashboard (~3 hours, live)

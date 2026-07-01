@@ -1,8 +1,8 @@
 # Pre-work: Setup & foundation
 
-**Get your tools set up before the workshop**
+**Get your tools set up before you start building (Part 1 of 2)**
 
-Estimated time: 70–100 minutes (complete before the workshop)
+Estimated time: 70–100 minutes, at your own pace. Do this part first; Part 2 (Build & Deploy) picks up where it leaves off.
 
 ---
 
@@ -37,9 +37,9 @@ Tracking:  A TASKS.md file in your repo (no extra account needed)
 Meetings:  Granola connected to Claude Code (for your capstone)
 ```
 
-**See the finished product:** Before you start, look at what you'll build during the workshop: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end of the workshop, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up -- it takes about 30 seconds.)
+**See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up -- it takes about 30 seconds.)
 
-> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you've already got Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams General channel and someone will help you before the workshop.
+> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you've already got Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams General channel and someone will help.
 
 > **Heads up:** Websites and software update their interfaces regularly. A button label, sign-up flow, or menu option described here may look slightly different by the time you go through it. This is normal -- the core steps stay the same even when the UI changes. If something doesn't match exactly, read the screen, figure out the equivalent step, and keep going. That adaptability is itself a professional skill.
 
@@ -116,7 +116,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 - **Cursor** is your code editor, where you write and organize files.
 - **Claude Code** is an AI assistant that runs in your terminal, reads your project, and helps you build.
 - **Superpowers** is a Claude Code plugin whose skills (brainstorming, writing-plans, executing-plans) turn requirements into bite-sized implementation tasks before you start coding.
-- **Python + Streamlit** is the technology stack for the dashboard you'll build during the workshop.
+- **Python + Streamlit** is the technology stack for the dashboard you'll build in Part 2.
 - **Granola** is an AI notepad for meetings. Connected to Claude Code through MCP, it lets Claude read your meeting notes. You set it up now but use it in your capstone, not for the dashboard.
 
 ---
@@ -140,7 +140,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 > **Pro Tip:** Your GitHub profile is a portfolio. The projects you build -- in this tutorial, in your capstone, on your own -- are all visible. A GitHub profile with well-documented projects shows employers you can build, not just analyze. Choose your username carefully. You'll use it for years.
 
-> **Where's the task-tracking account?** Earlier versions of this tutorial had you create a Jira account here. Version 4 tracks work in a `TASKS.md` file that lives in your repository instead, so there's no third account to create. You'll set that file up during the workshop. Why the change? A task file is versioned with your code, diffs cleanly in Git, works offline, and -- most importantly -- Claude Code can read and edit it directly without connecting to an outside service. You still get the same discipline (every task tracked from *To Do* to *Done*), with less setup and tighter integration. More on the "why" when you build it.
+> **Where's the task-tracking account?** Earlier versions of this tutorial had you create a Jira account here. Version 4 tracks work in a `TASKS.md` file that lives in your repository instead, so there's no third account to create. You'll set that file up in Part 2. Why the change? A task file is versioned with your code, diffs cleanly in Git, works offline, and -- most importantly -- Claude Code can read and edit it directly without connecting to an outside service. You still get the same discipline (every task tracked from *To Do* to *Done*), with less setup and tighter integration. More on the "why" when you build it.
 
 ---
 
@@ -164,7 +164,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 ### 1.3 Granola account and student plan
 
-> **Why Granola?** Granola is an AI notepad for meetings. It listens while you talk, then turns the conversation into clean, searchable notes -- so you can pay attention instead of scrambling to type. You won't need it to build the dashboard in this workshop. You set it up now because it pays off in your **capstone**: when you meet with stakeholders, Granola captures what was said, and later (in Section 2.6) you'll connect it to Claude Code so you can pull those meeting notes straight into a build session -- "what did the client ask for in Tuesday's meeting?" answered from your actual notes, not your memory.
+> **Why Granola?** Granola is an AI notepad for meetings. It listens while you talk, then turns the conversation into clean, searchable notes -- so you can pay attention instead of scrambling to type. You won't need it to build the dashboard in this tutorial. You set it up now because it pays off in your **capstone**: when you meet with stakeholders, Granola captures what was said, and later (in Section 2.6) you'll connect it to Claude Code so you can pull those meeting notes straight into a build session -- "what did the client ask for in Tuesday's meeting?" answered from your actual notes, not your memory.
 
 **Steps:**
 
@@ -312,7 +312,7 @@ git config --global user.email "your.email@example.com"
 
 ### 2.3 Python 3.11+
 
-> **Why Python?** Python is the dominant language in data science, analytics, and AI. Pandas, scikit-learn, TensorFlow, Streamlit -- the tools you use in your coursework and will use in your career are all Python-based. You need Python 3.11 or higher installed so you can run the dashboard application you'll build during the workshop.
+> **Why Python?** Python is the dominant language in data science, analytics, and AI. Pandas, scikit-learn, TensorFlow, Streamlit -- the tools you use in your coursework and will use in your career are all Python-based. You need Python 3.11 or higher installed so you can run the dashboard application you'll build in Part 2.
 
 **Check your current version:**
 
@@ -378,7 +378,7 @@ After installation, open a **new terminal** (Terminal --> New Terminal) so the P
 2. You'll be prompted to log in. A browser window opens. Log in with your Claude account (the one with the Pro subscription from Section 1.2).
 3. Authorize Claude Code to access your account.
 4. Return to the terminal. You should see Claude Code's interactive prompt.
-5. Type `/exit` to quit for now. You'll come back to Claude Code in Section 2.5 and use it throughout the workshop.
+5. Type `/exit` to quit for now. You'll come back to Claude Code in Section 2.5 and use it throughout Part 2.
 
 > **If authentication fails:** Run `claude auth logout` in the terminal (or type `/logout` inside Claude Code), then run `claude` again. Make sure your browser allows popup windows. The authentication flow opens a new browser tab. If you're using a browser with aggressive popup blocking, temporarily allow popups for the authentication URL.
 
@@ -388,11 +388,32 @@ After installation, open a **new terminal** (Terminal --> New Terminal) so the P
 
 ### 2.5 Superpowers plugin
 
-> **What is Superpowers?** [Superpowers](https://github.com/obra/superpowers) is a Claude Code plugin that gives Claude a library of skills. A skill is a small piece of expertise Claude pulls in when your prompt matches it. Three skills you'll use today: `brainstorming` (asks clarifying questions and produces a design document), `writing-plans` (turns a design into a bite-sized implementation plan), and `executing-plans` (works through the plan task by task with frequent commits). The skills auto-invoke based on what you ask Claude to do, so you don't have to memorize commands.
+> **What is Superpowers?** [Superpowers](https://github.com/obra/superpowers) is a Claude Code plugin that gives Claude a library of skills. A skill is a small piece of expertise Claude pulls in when your prompt matches it. Three skills you'll use in Part 2: `brainstorming` (asks clarifying questions and produces a design document), `writing-plans` (turns a design into a bite-sized implementation plan), and `executing-plans` (works through the plan task by task with frequent commits). The skills auto-invoke based on what you ask Claude to do, so you don't have to memorize commands.
 
 #### Skills primer
 
 Skills are markdown files that ship with the Superpowers plugin. Each one teaches Claude how to handle a specific type of task. When you ask Claude to design something, the brainstorming skill activates. When you ask Claude to implement a plan, the executing-plans skill activates. Claude reads each skill's description at session start and matches your prompt against those descriptions to decide which skill to load. Claude announces which skill it's using, like "Using brainstorming to..." That visibility is the whole reason this works as a teaching tool.
+
+Here's the flow you'll see in Part 2 -- you never call a skill by name; your plain-English prompt triggers the chain:
+
+```
+You type a plain-English prompt
+("Help me design and plan the dashboard")
+              |
+              v
+     using-superpowers          <- loaded at session start;
+     reads your intent             matches your words to a skill
+              |
+              v
+  brainstorming ──► writing-plans ──► executing-plans
+  (clarifies and     (turns it into     (builds it task by
+   writes a          a step-by-step      task, testing and
+   design doc)       plan)               committing)
+              |
+              v
+  Claude announces each step: "Using <skill> to ..."
+  (that line is your cue a skill kicked in)
+```
 
 You'll only ever type one slash command for the entire tutorial: the install command below. Everything else flows from natural-language prompts.
 
@@ -425,6 +446,31 @@ You'll only ever type one slash command for the entire tutorial: the install com
 This is the payoff of the Granola account you made in Section 1.3. You'll install the app and then give Claude Code the ability to read your meeting notes. Again: you don't use this to build the dashboard -- it's here so it's ready for your capstone.
 
 > **What is MCP?** MCP (Model Context Protocol) is how Claude Code connects to outside services. Think of it as a port you can plug tools into: once you plug in Granola, Claude Code can search and read your meeting notes without you copying and pasting anything. (Notice the contrast with how this tutorial tracks tasks: your `TASKS.md` board is just a file Claude Code already reads, so it needs no MCP. Meeting notes live in Granola's cloud, so MCP is how Claude reaches them. Use a plain file when you can; use MCP when the data lives somewhere else.)
+
+Here's how your words in a meeting end up readable by Claude Code:
+
+```
+┌──────────────┐   Granola listens,    ┌──────────────┐
+│ Your meeting │──  transcribes,    ──> │ Granola app  │
+│  (you talk)  │    cleans up           │  (desktop)   │
+└──────────────┘                        └──────┬───────┘
+                                               │ syncs your notes up
+                                               v
+                                        ┌──────────────┐
+                                        │ Granola cloud│
+                                        │ (your notes) │
+                                        └──────┬───────┘
+                                               │ MCP server
+                                               │ (you authorize once,
+                                               │  in the browser)
+                                               v
+                                        ┌──────────────┐
+                                        │  Claude Code │  <- "Summarize my
+                                        │  (terminal)  │      last meeting"
+                                        └──────────────┘
+```
+
+The top half (record -> transcribe -> sync) happens in the Granola app. The bottom half (cloud -> MCP -> Claude Code) is the connection you set up below, once.
 
 **Install the app:**
 
@@ -615,7 +661,7 @@ Here's what you've just configured:
 |    Claude Code ........ AI terminal assistant                   |
 |    Superpowers ........ Skill-driven planning (Claude plugin)   |
 |    Granola app ........ AI notepad for meetings                  |
-|    TASKS.md ........... In-repo task board (created in workshop) |
+|    TASKS.md ........... In-repo task board (created in Part 2)  |
 |                                                                |
 |  Your Repository:                                              |
 |    Fork on GitHub ..... Your remote copy                       |
@@ -624,9 +670,9 @@ Here's what you've just configured:
 +---------------------------------------------------------------+
 ```
 
-These tools are connected in a way that creates a complete workflow: GitHub hosts your code, Git tracks changes, a `TASKS.md` file tracks your work, Cursor is where you write code, Claude Code helps you build, and the Superpowers plugin's skills help Claude plan before you build. During the workshop, you'll see all of these tools work together as you plan, build, and deploy a live dashboard.
+These tools are connected in a way that creates a complete workflow: GitHub hosts your code, Git tracks changes, a `TASKS.md` file tracks your work, Cursor is where you write code, Claude Code helps you build, and the Superpowers plugin's skills help Claude plan before you build. In Part 2, you'll see all of these tools work together as you plan, build, and deploy a live dashboard.
 
-> **Before the workshop:** If anything above isn't working, post in the Teams General channel now. It's much easier to resolve setup issues asynchronously than during the live session.
+> **Before you start Part 2:** If anything above isn't working, post in the Teams General channel now. It's much easier to sort out setup problems before you start building than in the middle of it.
 
 ---
 
@@ -790,7 +836,7 @@ Your pre-work is complete. You've:
 
 Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, an in-repo `TASKS.md` for tracking deliverables, Claude Code with the Superpowers plugin for turning requirements into bite-sized plans, and Granola for turning stakeholder meetings into notes Claude Code can read. You'll use this same environment for your capstone and beyond.
 
-**Bring your completed setup to the workshop.** During the workshop, you'll put everything together:
+**With setup done, you're ready for Part 2.** In the build guide, you'll put everything together:
 
 1. **Set up your `TASKS.md` board** so you (and Claude Code) can track every task from *To Do* to *Done*, all inside your repository.
 2. **Plan with Superpowers** -- let the brainstorming skill produce a design document, then writing-plans turn it into a bite-sized implementation plan.
@@ -799,4 +845,4 @@ Every tool you just set up transfers directly to your capstone project: Git and 
 
 The tools are ready. Next, you build.
 
-Continue to [**Workshop: Build & Deploy**](workshop-build-deploy.md).
+Continue to [**Part 2: Build & Deploy**](workshop-build-deploy.md).

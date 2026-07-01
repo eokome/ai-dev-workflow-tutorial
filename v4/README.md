@@ -6,8 +6,8 @@ You'll work through it in two parts:
 
 | Part | What you do | Time |
 |------|-------------|------|
-| [Pre-work](pre-work-setup.md) | Set up accounts, install tools (incl. Granola for meeting notes), get your repo ready | 70–100 min on your own, before the workshop |
-| [Workshop](workshop-build-deploy.md) | Plan with [Superpowers](https://github.com/obra/superpowers), track work in `TASKS.md`, build with Claude Code, deploy live | ~3 hours, live on Zoom |
+| [Part 1: Setup](pre-work-setup.md) | Set up accounts, install tools (incl. Granola for meeting notes), get your repo ready | 70–100 min, at your own pace (do this first) |
+| [Part 2: Build & Deploy](workshop-build-deploy.md) | Plan with [Superpowers](https://github.com/obra/superpowers), track work in `TASKS.md`, build with Claude Code, deploy live | ~3 hours, self-paced |
 
 ## Why this matters
 
@@ -95,4 +95,4 @@ Every technology company uses a variation of this workflow. You'll experience th
 
 ## Where to start
 
-Open [pre-work-setup.md](pre-work-setup.md) and work through it before the workshop.
+Open [pre-work-setup.md](pre-work-setup.md) and work through it first, then continue to Part 2.

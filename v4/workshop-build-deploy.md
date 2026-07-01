@@ -1,14 +1,14 @@
-# Workshop: Build & Deploy
+# Build & Deploy
 
 **From requirements to a live dashboard using skill-driven development.**
 
-**Format:** 3-hour Zoom workshop
+**Format:** Self-paced, about 3 hours
 
 ---
 
 ## Table of contents
 
-- [Workshop agenda](#workshop-agenda)
+- [How to work through this guide](#how-to-work-through-this-guide)
 - [Section 1: Set up your task board from the PRD (~15 min)](#section-1-set-up-your-task-board-from-the-prd-15-min)
 - [Section 2: Brainstorm and plan (~30 min)](#section-2-brainstorm-and-plan-30-min)
   - [2.1 Create v4/CLAUDE.md](#21-create-v4claudemd)
@@ -27,21 +27,17 @@
 
 ---
 
-## Workshop agenda
+## How to work through this guide
 
-| Time | Activity |
-|------|----------|
-| 0:00–0:15 | **Setup check + triage** -- verify pre-work, troubleshoot stragglers |
-| 0:15–0:30 | **Live walkthrough** -- everyone watches the plan-to-tasks flow, then does it themselves |
-| 0:30–3:00 | **Build at your own pace** -- work through the guide below; ask questions as you go |
+This guide is self-paced. Work through it top to bottom -- each section builds on the one before it, so don't skip ahead. Most people finish in about three hours, but there's no clock: do it in one sitting or split it across a few sessions, whatever fits your schedule. You'll save your progress with Git as you go (Section 4), so you can stop and pick up later without losing anything.
 
-> **Didn't finish the pre-work?** Work through the [pre-work setup guide](pre-work-setup.md) first -- most people finish it in under an hour. You can catch up and still complete the build during the workshop. Ask in the Teams General channel if you get stuck.
+> **Didn't finish the setup yet?** Work through the [setup guide](pre-work-setup.md) first -- most people finish it in under an hour. Then come back and complete the build here. Ask in the Teams General channel if you get stuck.
 
 ---
 
 ## What you'll accomplish
 
-By the end of this workshop, you'll have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you'll have:
+By the end of this guide, you'll have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you'll have:
 
 - Set up an in-repo `TASKS.md` board of milestones drawn from the PRD, with a shared Definition of Done
 - Generated Superpowers artifacts: a design document and an implementation plan
@@ -79,7 +75,7 @@ If any command fails, return to the [pre-work setup guide](pre-work-setup.md) an
 
 ## The professional workflow
 
-This is the workflow used at technology companies worldwide. Today you'll experience the entire cycle, from specification to deployment.
+This is the workflow used at technology companies worldwide. You'll experience the entire cycle, from specification to deployment.
 
 ```
 ┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌────────┐
@@ -93,9 +89,9 @@ This is the workflow used at technology companies worldwide. Today you'll experi
 └─────────┘    └──────────┘    └─────────┘    └────────────────────────────────┘
 ```
 
-Each box in this diagram is a distinct stage you'll complete today. The left-to-right flow on the top row moves from planning to execution. The right-to-left flow on the bottom row moves from saving your work to making it publicly available. Together, they form a closed loop: requirements become running software that stakeholders can access.
+Each box in this diagram is a distinct stage you'll complete. The left-to-right flow on the top row moves from planning to execution. The right-to-left flow on the bottom row moves from saving your work to making it publicly available. Together, they form a closed loop: requirements become running software that stakeholders can access.
 
-> **Why skill-driven development?** You could ask Claude "build me a dashboard" directly. But without a clear plan, Claude makes assumptions, and AI can build the wrong thing very fast. Superpowers' skills give the work structure: brainstorming explores what to build, writing-plans turns the design into a bite-sized plan, and executing-plans implements one task at a time. Letting the skills run their process is what makes AI-assisted coding predictable instead of chaotic. In your capstone, this discipline will be the difference between a project that drifts and one that delivers.
+> **Why skill-driven development?** You could ask Claude "build me a dashboard" directly. But without a clear plan, Claude makes assumptions, and AI can build the wrong thing very fast. Superpowers' skills give the work structure: brainstorming explores what to build, writing-plans turns the design into a bite-sized plan, and executing-plans implements one task at a time. Letting the skills run their process is what makes AI-assisted coding predictable instead of chaotic. The same habit will help keep a bigger capstone project from drifting.
 
 ---
 
@@ -443,7 +439,7 @@ Before you start building, understand how Claude Code interacts with your files.
 
 Press **Shift+Tab** to cycle between modes. The current mode (for example, "accept edits on" or "plan mode on") shows at the bottom of the Claude Code interface.
 
-> **Recommendation for this workshop:** Switch to **Accept edits** mode for the build phase. You've already defined detailed specifications, and Claude will follow them. Accept edits lets you maintain momentum through the implementation cycle. If you prefer to review each change (a valid learning choice), stay in Normal mode -- it'll just take longer.
+> **Recommendation:** Switch to **Accept edits** mode for the build phase. You've already defined detailed specifications, and Claude will follow them. Accept edits lets you maintain momentum through the implementation cycle. If you prefer to review each change (a valid learning choice), stay in Normal mode -- it'll just take longer.
 
 ### 4.1 Implement the first milestone
 
@@ -457,7 +453,7 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    Claude will recognize this as an implementation task and auto-invoke `executing-plans`. You'll see `Using executing-plans to...` in the output. The skill reads the plan and works through the steps under this milestone, one at a time.
 
-   > **What you'll see during a TDD step:** For plan steps flagged as test-driven (typically data-transformation steps like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit. For non-TDD steps (chart rendering, page layout), it'll skip straight to implementation and commit. A single milestone may contain several such steps. Watch the test output: seeing red turn green is one of the more satisfying parts of the workshop.
+   > **What you'll see during a TDD step:** For plan steps flagged as test-driven (typically data-transformation steps like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit. For non-TDD steps (chart rendering, page layout), it'll skip straight to implementation and commit. A single milestone may contain several such steps. Watch the test output: seeing red turn green is one of the more satisfying parts of the build.
 
    > **What happens during implementation:** Claude reads the task and its acceptance criteria, consults the specification and plan, then writes the code. Watch the output -- you'll see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
@@ -790,7 +786,7 @@ Before submitting, walk through every item below. Each category corresponds to a
 PRD [done] -> TASKS.md [done] -> brainstorming [done] -> writing-plans [done] -> Code [done] -> Commit [done] -> Push [done] -> Deploy [done] -> Live! [done]
 ```
 
-In this workshop, you practiced five professional skills:
+In this guide, you practiced five professional skills:
 
 1. **Skill-driven development** -- You brainstormed, planned, broke down tasks, then implemented. This discipline works with any technical project, not just this tutorial.
 
@@ -843,7 +839,7 @@ I ran `streamlit run app.py` and got this error:
 What's wrong and how do I fix it?
 ```
 
-This handles the large majority of what goes wrong in this workshop -- wrong file paths, a missing package, a port already in use, a rejected push, a merge conflict. Let Claude diagnose before you go hunting through documentation.
+This handles the large majority of what goes wrong here -- wrong file paths, a missing package, a port already in use, a rejected push, a merge conflict. Let Claude diagnose before you go hunting through documentation.
 
 **Three habits that fix things before you even ask:**
 
@@ -857,11 +853,11 @@ This handles the large majority of what goes wrong in this workshop -- wrong fil
 
 ## Other Superpowers skills you'll meet later
 
-You'll encounter these in larger projects beyond this tutorial. We didn't formally use them in this workshop either because they're more advanced than it needs, or because we explicitly overrode them in CLAUDE.md.
+You'll encounter these in larger projects beyond this tutorial. We didn't formally use them here either because they're more advanced than this project needs, or because we explicitly overrode them in CLAUDE.md.
 
 | Skill | What it does | Why we skipped it here |
 |-------|--------------|------------------------|
-| `using-git-worktrees` | Creates an isolated working directory per branch so multiple branches can be checked out at the same time | We overrode this in CLAUDE.md to keep the workshop on a single working directory |
+| `using-git-worktrees` | Creates an isolated working directory per branch so multiple branches can be checked out at the same time | We overrode this in CLAUDE.md to keep this project on a single working directory |
 | `dispatching-parallel-agents` | Splits independent tasks across multiple agents that work in parallel | Overkill for a single-project tutorial |
 | `subagent-driven-development` | Executes plans by dispatching a fresh subagent per task, with review checkpoints between | A more advanced execution model than executing-plans; same outcome, more moving parts |
 | `writing-skills` | Helps you author your own Superpowers skills | Meta. For skill authors, not skill consumers |
