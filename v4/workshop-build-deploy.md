@@ -266,15 +266,19 @@ Each skill narrows the space of possible outcomes. By the time executing-plans r
 
 ### 2.2 Create the feature branch
 
-In Cursor's terminal:
+You could type the Git command yourself, but you don't have to. In Claude Code, just ask:
 
-```bash
-git checkout -b feature/sales-dashboard
 ```
+Create a new git branch called feature/sales-dashboard and switch to it.
+```
+
+Claude runs the command and confirms you're on the new branch.
+
+> **This is the whole idea.** You don't memorize Git commands in this tutorial. When you need one, describe what you want and let Claude Code run it. It'll show you the command it used (here, `git checkout -b feature/sales-dashboard`), so you pick up the vocabulary as you go instead of drilling it up front.
 
 Your `main` branch stays clean and stable while you work on the feature branch. Same pattern professional development teams use.
 
-**Checkpoint:** `git branch --show-current` returns `feature/sales-dashboard`.
+**Checkpoint:** Ask Claude "which branch am I on?" -- it should be `feature/sales-dashboard`.
 
 ### 2.3 Brainstorm and plan with one prompt
 
