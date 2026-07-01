@@ -222,10 +222,14 @@ Each skill narrows the space of possible outcomes. By the time executing-plans r
    built by MSBA students learning AI-assisted development.
 
    ## Task tracking
-   - Work is tracked in TASKS.md in the project root. Before coding, confirm which
-     task ID (e.g. TASK-1) you're working on and its acceptance criteria.
-   - When a task is finished, move it to Done in TASKS.md, check off its criteria,
-     and remind me to commit with the task ID in the message.
+   - The implementation plan in docs/superpowers/plans/ holds the detailed build
+     steps. TASKS.md in the project root holds the coarser milestones I track
+     (TASK-1, TASK-2, ...). One milestone covers several plan steps.
+   - Before building, confirm which milestone we're on and which plan steps it
+     covers, then work through those steps.
+   - When a milestone's steps are done, move it to Done in TASKS.md, check off its
+     acceptance criteria, record the commit(s), and use the milestone ID in the
+     commit message.
 
    ## Workflow conventions
    - Work on a feature branch on the main checkout. Do **not** create a git worktree
@@ -331,57 +335,70 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
 ### Connecting planning to tracking
 
-Now you bridge two worlds: Superpowers (planning) and your task board (tracking). Each task from your implementation plan becomes an entry in `TASKS.md`, giving you visibility into progress and creating traceability between requirements and implementation.
+You now have an implementation plan from writing-plans. It's a long, detailed list of small engineering steps in the order Claude should build them. That level of detail is exactly what Claude needs to write code, but it's too fine-grained to *track* -- nobody reports status as "step 14 of 37 done."
 
-> **Why This Matters:** In professional teams, every piece of work is tracked. When a manager asks "what is the status of the dashboard?" or a stakeholder asks "why was this chart implemented this way?", you can trace the answer through your task board and commit history. Each task links to a requirement (from the spec), a code change (commit), and a result (deployed feature). This traceability is how teams build software without losing track of why changes were made.
+So you'll create a second, coarser view: a handful of **milestones** in `TASKS.md`. Each milestone groups several plan steps into one deliverable a person would recognize -- "KPI scorecards," "Deploy." This is the difference between an engineer's checklist and the board a manager watches.
+
+> **The two artifacts, and why they don't overlap:**
+>
+> | | Implementation plan | `TASKS.md` |
+> |---|---|---|
+> | **Lives in** | `docs/superpowers/plans/` | project root |
+> | **Granularity** | Fine -- every engineering step | Coarse -- ~4-8 milestones |
+> | **Written/updated by** | Superpowers (`writing-plans`, then `executing-plans` checks steps off as it builds) | You, with Claude's help |
+> | **Answers** | "What's the next step to code?" | "What's the status of the dashboard?" |
+> | **Audience** | Claude (the builder) | You, your grader, a stakeholder |
+>
+> The plan is the "how." `TASKS.md` is the "what and where-are-we." Claude builds from the plan; you track from the board. One milestone on the board covers several steps in the plan -- they're two zoom levels of the same work, not two copies of it.
 
 ```
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│  plan.md     │ --> │  TASKS.md    │ --> │  Code        │
-│  (writing-   │     │  (TASK-1,    │     │  (commits    │
-│   plans)     │     │   TASK-2...) │     │   reference  │
-│              │     │              │     │   task IDs)  │
-│  Source of   │     │  Track       │     │              │
-│  truth for   │     │  progress    │     │              │
-│  what to     │     │  and status  │     │              │
-│  build       │     │              │     │              │
-└──────────────┘     └──────────────┘     └──────────────┘
+Implementation plan (detail)          TASKS.md (milestones)
+┌────────────────────────────┐        ┌────────────────────────────┐
+│ [x] scaffold app.py         │  ┐     │ TASK-1  Project + data      │
+│ [x] add requirements.txt    │  ├───> │         loading             │
+│ [x] load + validate CSV     │  ┘     ├────────────────────────────┤
+│ [ ] compute_total_sales +   │  ┐     │ TASK-2  KPI scorecards      │
+│     test                    │  ├───> │                             │
+│ [ ] render KPI metrics      │  ┘     ├────────────────────────────┤
+│ [ ] build trend chart       │  ────> │ TASK-3  Sales trend chart   │
+│ ...                         │        │ ...                         │
+└────────────────────────────┘        └────────────────────────────┘
+  Claude works step by step             You track milestone by milestone
 ```
 
-### 3.1 Populate your task board from the plan
+### 3.1 Create your milestones from the plan
 
-1. In Claude Code, ask Claude to turn your implementation plan into tasks on the board:
+1. In Claude Code, ask Claude to group the plan into a short list of milestones on the board:
 
    ```
-   Read the implementation plan at @docs/superpowers/plans/<plan-file>.md and add each task to the To Do section of TASKS.md. Number them TASK-1, TASK-2, and so on. For each task, include a one-line description and 1-3 acceptance criteria as checkboxes. Don't change the Definition of Done.
+   Read the implementation plan at @docs/superpowers/plans/<plan-file>.md and group its steps into 4-8 milestone tasks in the To Do section of TASKS.md. Number them TASK-1, TASK-2, and so on. For each milestone, add a one-line description, 1-3 acceptance criteria as checkboxes, and a note of which plan steps it covers. Don't copy every plan step -- keep it to milestones. Leave the Definition of Done unchanged.
    ```
 
    Replace `<plan-file>` with the actual filename. To find it quickly, run `ls -t docs/superpowers/plans/ | head -1` in your terminal.
 
    > **How does Claude update the board?** `TASKS.md` is just a file in your project, so Claude Code edits it the same way it edits any other file -- no connector, no login, no special tool. You'll see it announce the edit, and you can watch the file change in Cursor. That directness is the whole point of tracking work in the repo.
 
-2. Claude reads the plan and writes the tasks into `TASKS.md`. Open the file in Cursor and read it. The To Do section should now look something like this:
+2. Claude reads the plan and writes the milestones into `TASKS.md`. Open the file in Cursor and read it. The To Do section should now look something like this:
 
    ```markdown
    ## To Do
-   - [ ] **TASK-1 -- Set up project structure and dependencies**
-     - [ ] `requirements.txt` lists streamlit, pandas, plotly
-     - [ ] `app.py` runs and shows a page title
-   - [ ] **TASK-2 -- Load and prepare the sales data**
-     - [ ] Reads `data/sales-data.csv` with pandas
-     - [ ] Handles a missing file with a clear message
-   - [ ] **TASK-3 -- Add KPI scorecards**
+   - [ ] **TASK-1 -- Project setup and data loading** (plan steps 1-3)
+     - [ ] App runs with `streamlit run app.py` and shows a title
+     - [ ] Loads `data/sales-data.csv`; handles a missing file cleanly
+   - [ ] **TASK-2 -- KPI scorecards** (plan steps 4-6)
      - [ ] Shows Total Sales and Total Orders as formatted metrics
+   - [ ] **TASK-3 -- Sales trend chart** (plan steps 7-9)
+     - [ ] Line chart of sales over time renders from the data
    ...
    ```
 
-   The exact tasks depend on your plan. What matters is that every task from the plan is now a trackable item with its own acceptance criteria.
+   The exact milestones depend on your plan. What matters is that you have a short, readable list -- each milestone with its own acceptance criteria and a pointer back to the plan steps it covers.
 
-3. Read a few of the tasks. Notice that each one has specific, checkable acceptance criteria -- these are how you'll know a task is actually done, beyond "the code seems to run."
+3. Read your milestones. If two feel like the same deliverable, ask Claude to merge them; if one is doing too much, split it. You're aiming for a list you could read aloud in a status update.
 
-**Checkpoint:** The To Do section of `TASKS.md` lists every task from your plan (TASK-1, TASK-2, ...), each with acceptance criteria.
+**Checkpoint:** The To Do section of `TASKS.md` lists 4-8 milestones (TASK-1, TASK-2, ...), each with acceptance criteria and a note of the plan steps it covers.
 
-> **Pro Tip:** Notice how the progression from PRD to brainstorming to writing-plans to `TASKS.md` creates increasingly specific, actionable items. The PRD said "display Total Sales"; the plan task might say "create KPI scorecards using Streamlit metric components with formatted currency values"; the task on your board captures this as a trackable item with acceptance criteria. This is the refinement process in practice.
+> **Pro Tip:** Notice the zoom levels. The PRD said "display Total Sales." The plan breaks that into steps ("compute total sales with a test," "render a metric component"). The board zooms back out to one milestone: "KPI scorecards." Same work, three altitudes -- requirement, engineering steps, trackable deliverable. Being able to move between them is a real skill.
 
 ---
 
@@ -415,25 +432,19 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
 > **Recommendation for this workshop:** Switch to **Auto-accept** mode for the build phase. You've already defined detailed specifications, and Claude will follow them. Auto-accept lets you maintain momentum through the implementation cycle. If you prefer to review each change (a valid learning choice), stay in Normal mode -- it'll just take longer.
 
-### 4.1 Implement the first task
+### 4.1 Implement the first milestone
 
-1. In Claude Code, ask which task to start with. Claude considers dependencies and suggests a logical starting point:
+Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a milestone, Claude works through the plan steps it covers, one at a time.
 
-   ```
-   Which task in TASKS.md should we implement first?
-   ```
-
-   Claude typically recommends starting with the environment setup or app structure task, since other tasks depend on it.
-
-2. In Claude Code, ask Claude to start implementing the first task and to move it to In Progress on your board:
+1. In Claude Code, start the first milestone and move it to In Progress on your board:
 
    ```
-   Let's start implementing TASK-1. Move it to the In Progress section of TASKS.md first.
+   Let's work on TASK-1. Move it to the In Progress section of TASKS.md, then implement the plan steps it covers.
    ```
 
-   Replace `TASK-1` with whichever task Claude recommended. Claude will recognize this as an implementation task and auto-invoke `executing-plans`. You'll see `Using executing-plans to...` in the output. The skill reads the plan, picks up the first task, and starts working.
+   Claude will recognize this as an implementation task and auto-invoke `executing-plans`. You'll see `Using executing-plans to...` in the output. The skill reads the plan and works through the steps under this milestone, one at a time.
 
-   > **What you'll see during a TDD task:** For tasks flagged as test-driven (typically data-transformation tasks like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit with a message referencing your task ID. For non-TDD tasks (chart rendering, page layout), it'll skip straight to implementation and commit. Watch the test output: seeing red turn green is one of the more satisfying parts of the workshop.
+   > **What you'll see during a TDD step:** For plan steps flagged as test-driven (typically data-transformation steps like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit. For non-TDD steps (chart rendering, page layout), it'll skip straight to implementation and commit. A single milestone may contain several such steps. Watch the test output: seeing red turn green is one of the more satisfying parts of the workshop.
 
    > **What happens during implementation:** Claude reads the task and its acceptance criteria, consults the specification and plan, then writes the code. Watch the output -- you'll see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
@@ -464,7 +475,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
    > **Key Concept: Virtual Environments.** The `source venv/bin/activate` command activates a **virtual environment** -- an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. The virtual environment ensures that your dashboard's dependencies (Streamlit, Pandas, Plotly) are contained within this project. You'll see `(venv)` at the beginning of your terminal prompt when the environment is active.
 
-5. Open `http://localhost:8501` in your browser. You should see the beginnings of your dashboard. The exact content depends on which task you implemented first.
+5. Open `http://localhost:8501` in your browser. You should see the beginnings of your dashboard. The exact content depends on which milestone you started with.
 
 6. When done reviewing, press **Ctrl+C** in the terminal to stop the Streamlit server.
 
@@ -508,27 +519,27 @@ Here is what each stage means:
 - **Remote (GitHub)** -- the cloud copy of your repository. The `git push` command uploads your local commits to GitHub, making them visible to others and serving as a backup.
 
 > **Key Concept: Traceability Through Commit Messages.**
-> When you include a task ID (like TASK-1) in your commit message, you create a traceable link that connects your code change to the task that prompted it:
+> When you include the milestone ID (like TASK-1) in your commit message, you create a traceable link that connects your code change to the milestone that prompted it:
 >
 > ```
 > TASK-1 in TASKS.md --> Commit "TASK-1: add KPI scorecards" --> GitHub --> Deployed Dashboard
 > ```
 >
-> Anyone can now trace the code back to the task that created it -- and because `TASKS.md` is versioned too, `git log -- TASKS.md` shows the full history of how tasks moved from To Do to Done. In professional environments, this traceability is how teams maintain accountability, conduct code reviews, and audit changes. Make it a habit to include the task ID in every commit message.
+> A milestone may span more than one commit (executing-plans commits each plan step as it builds). What matters is that its commits carry the milestone ID and the board records where the work landed. Because `TASKS.md` is versioned too, `git log -- TASKS.md` then shows the full history of how milestones moved from To Do to Done. In professional environments, this traceability is how teams maintain accountability, conduct code reviews, and audit changes.
 
 #### Steps
 
-1. **Commit your changes.** In Claude Code, ask Claude to create a commit with the task ID in the message. Also ensure the virtual environment directory isn't tracked:
+1. **Commit any outstanding changes.** As it worked through the milestone, executing-plans likely committed each plan step already. This step captures anything still uncommitted -- often just your `TASKS.md` update -- with the milestone ID. In Claude Code:
 
    ```
-   Commit my changes for TASK-1, including the TASKS.md update. Make sure venv/ is in .gitignore.
+   Commit anything outstanding for TASK-1, including the TASKS.md update, with the milestone ID in the message. Make sure venv/ is in .gitignore.
    ```
 
-   Claude will add `venv/` to `.gitignore` (if not already there), stage your changes, and create a commit with a message like "TASK-1: Set up project structure and dependencies."
+   Claude will add `venv/` to `.gitignore` (if not already there), stage the remaining changes, and create a commit with a message like "TASK-1: Set up project structure and dependencies." (If nothing's left to commit, Claude will tell you -- that just means the step-by-step commits already covered it.)
 
    > **Key Concept: .gitignore.** The `.gitignore` file tells Git which files and directories to ignore. Virtual environments (`venv/`), compiled files, and operating system files should never be committed to a repository -- they're large, machine-specific, and can be regenerated. The `.gitignore` file prevents accidental commits of these files.
 
-   > **What is a commit hash?** After committing, Git produces a unique identifier called a **commit hash** -- a string like `05a9ada`. This hash is a fingerprint: no two commits in the history of your repository will ever have the same hash. You'll record this hash next to the task in `TASKS.md` so anyone can find exactly which code change fulfilled it.
+   > **What is a commit hash?** Each commit gets a unique identifier called a **commit hash** -- a string like `05a9ada`. It's a fingerprint: no two commits in your repository will ever share one. A milestone may produce several commits; you'll record the last one (or the range) next to the milestone in `TASKS.md` so anyone can find the code that fulfilled it.
 
 2. **Push to GitHub.** In Claude Code, upload your local commit to the remote repository:
 
@@ -541,37 +552,35 @@ Here is what each stage means:
 3. **Update your task board.** In Claude Code, close the loop by recording what you did:
 
    ```
-   Update TASK-1 in TASKS.md: check off its acceptance criteria and the Definition of Done, add the commit hash next to it, and move it from In Progress to Done.
+   Update TASK-1 in TASKS.md: check off its acceptance criteria and the Definition of Done, record the commit hash, and move it from In Progress to Done.
    ```
 
-   Claude edits `TASKS.md` -- checking the boxes, noting the commit hash, and moving the task into the Done section.
-
-   > **Tip:** You can fold this into the commit step so the board update lands in the same commit. Just ask: "Move TASK-1 to Done in TASKS.md with the commit hash, then commit everything for TASK-1." Keeping the board update in the same commit as the code is a clean habit -- the task and the code that satisfies it move together.
+   Claude edits `TASKS.md` -- checking the boxes, noting the commit, and moving the milestone into the Done section.
 
 4. **Verify on your board.** Open `TASKS.md` in Cursor and confirm:
    - TASK-1 is now in the Done section
    - Its acceptance criteria and the Definition of Done are checked off
    - The commit hash is recorded next to it
 
-**Checkpoint:** Code is on GitHub. TASK-1 shows in the Done section of `TASKS.md` with its criteria checked and commit hash recorded.
+**Checkpoint:** Code is on GitHub. TASK-1 shows in the Done section of `TASKS.md` with its criteria checked and commit recorded.
 
-### 4.3 Complete remaining tasks
+### 4.3 Complete remaining milestones
 
-Now repeat the implementation cycle for each remaining task on your board. If your plan produced a deployment task, skip it for now -- that comes in Section 5.
+Now repeat the cycle for each remaining milestone on your board, in order. If one of your milestones is deployment, skip it for now -- that comes in Section 5.
 
-The cycle for each task is:
+The cycle for each milestone is:
 
 ```
-Ask which task is next
+Take the next milestone
         |
         v
-"Let's implement TASK-N" --> Claude auto-invokes executing-plans --> Move to In Progress
+"Let's work on TASK-N" --> executing-plans works its plan steps --> Move to In Progress
         |
         v
 Test the dashboard (streamlit run app.py)
         |
         v
-Commit with task ID in message
+Make sure the milestone's commits carry the task ID
         |
         v
 Push to GitHub
@@ -580,29 +589,29 @@ Push to GitHub
 Update TASKS.md --> check off criteria --> Move to Done
 ```
 
-Here is the pattern for each task. In Claude Code:
+Here is the pattern for each milestone. In Claude Code:
 
 ```
-Let's implement TASK-2. Move it to In Progress in TASKS.md first.
+Let's work on TASK-2. Move it to In Progress in TASKS.md, then implement the plan steps it covers.
 ```
 
-Claude auto-invokes `executing-plans` and moves the task to In Progress.
+Claude auto-invokes `executing-plans` and works through the plan steps under the milestone.
 
 After implementation and testing, in Claude Code:
 
 ```
-Commit my changes for TASK-2 and push to GitHub.
+Commit anything outstanding for TASK-2 and push to GitHub.
 
-Then update TASK-2 in TASKS.md: check off its acceptance criteria and the Definition of Done, add the commit hash, and move it to Done.
+Then update TASK-2 in TASKS.md: check off its acceptance criteria and the Definition of Done, record the commit hash, and move it to Done.
 ```
 
-Replace `TASK-2` with the current task ID. Repeat for TASK-3, TASK-4, and so on.
+Replace `TASK-2` with the current milestone ID. Repeat for TASK-3, TASK-4, and so on.
 
-> **Skip the deployment task for now (if you have one).** You can't deploy until your code is merged to `main`, which happens in the next step. Leave any deployment task in the To Do section.
+> **Skip the deployment milestone for now (if you have one).** You can't deploy until your code is merged to `main`, which happens in the next step. Leave any deployment milestone in the To Do section.
 
-> **Pro Tip:** Watch Claude's output as it implements each task. You'll see files being created, imports being added, and functions being written. This is a good way to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. You can reuse these patterns in your capstone.
+> **Pro Tip:** Watch Claude's output as it works each milestone. You'll see files being created, imports being added, and functions being written. This is a good way to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. You can reuse these patterns in your capstone.
 
-After working through all implementation tasks, test the complete dashboard one final time. You can run these yourself or ask Claude Code:
+After working through all implementation milestones, test the complete dashboard one final time. You can run these yourself or ask Claude Code:
 
 **Option A -- run it yourself** in Cursor's terminal:
 
@@ -619,7 +628,7 @@ Activate my virtual environment and run the Streamlit app so I can test the comp
 
 Open `http://localhost:8501` and verify that all components are present: KPI scorecards, a sales trend line chart, and category/region bar charts. Press **Ctrl+C** to stop the server.
 
-**Checkpoint:** All implementation tasks are in the Done section of `TASKS.md` with their criteria checked and commit hashes recorded. Only a deployment task (if you have one) remains in To Do.
+**Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and commits recorded. Only a deployment milestone (if you have one) remains in To Do.
 
 ### 4.4 Merge to main
 
@@ -726,10 +735,10 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
 Record the deployment on your board. In Claude Code:
 
 ```
-Add a TASK for deployment to TASKS.md if one doesn't exist, record the live Streamlit URL next to it, check off its criteria, and move it to Done. Then commit TASKS.md.
+Add a deployment milestone to TASKS.md if one doesn't exist, record the live Streamlit URL next to it, check off its criteria, and move it to Done. Then commit TASKS.md.
 ```
 
-**Checkpoint:** The dashboard is live and accessible at a public URL. The deployment task is in the Done section of `TASKS.md` with the live URL recorded.
+**Checkpoint:** The dashboard is live and accessible at a public URL. The deployment milestone is in the Done section of `TASKS.md` with the live URL recorded.
 
 ---
 
@@ -744,10 +753,10 @@ Before submitting, walk through every item below. Each category corresponds to a
 
 ### Task board (TASKS.md)
 
-- [ ] Tasks created from plan (TASK-1, TASK-2, etc.), each with acceptance criteria
-- [ ] A Definition of Done applies to every task
-- [ ] All implementation tasks are in the Done section, criteria checked
-- [ ] Each done task records its commit hash
+- [ ] Milestones created from the plan (4-8 of them: TASK-1, TASK-2, ...), each with acceptance criteria
+- [ ] A Definition of Done applies to every milestone
+- [ ] All implementation milestones are in the Done section, criteria checked
+- [ ] Each done milestone records its commit hash
 
 ### Dashboard
 
@@ -793,8 +802,8 @@ In this workshop, you practiced five professional skills:
 2. **Streamlit dashboard link** -- your live deployed URL (e.g., `https://sales-dashboard-yourname.streamlit.app`)
 
 3. **Your completed `TASKS.md`** -- because the board lives in your repo, there's no screenshot to submit. Just make sure the final `TASKS.md` on your `main` branch shows:
-   - Every implementation task in the Done section, acceptance criteria checked
-   - A commit hash recorded next to each done task
+   - Every implementation milestone in the Done section, acceptance criteria checked
+   - A commit hash recorded next to each done milestone
    - The Definition of Done checked off
 
    Your instructor can open `TASKS.md` on GitHub and run `git log -- TASKS.md` to see how the work progressed -- that history is your evidence.
@@ -1070,7 +1079,9 @@ Quick-reference table of key terms used in this document.
 | **executing-plans** | A Superpowers skill that implements tasks from an implementation plan one at a time, with frequent commits |
 | **Feature Branch** | A branch created specifically for developing one feature, separate from main |
 | **Fork** | Your personal copy of someone else's repository on GitHub, under your own account |
+| **Implementation plan** | The detailed, step-by-step build list `writing-plans` produces in `docs/superpowers/plans/`; Claude builds from it |
 | **Merge** | Combine changes from one branch into another, integrating completed work |
+| **Milestone** | A coarse, human-facing deliverable on your `TASKS.md` board (TASK-1, TASK-2, ...) that groups several plan steps |
 | **PRD** | Product Requirements Document -- a written description of what to build and why |
 | **Push** | Upload local commits to a remote repository (GitHub), making them visible and backed up |
 | **Staging Area** | A holding zone in Git for changes you intend to include in your next commit |
@@ -1087,3 +1098,5 @@ Quick-reference table of key terms used in this document.
 ## What's next
 
 You now have a complete professional workflow you can apply to your capstone project and beyond. The same cycle -- brainstorm, plan, track, build, deploy -- works for any technical project, whether it's a data pipeline, a machine learning model, or another dashboard. The tools and habits transfer.
+
+> **Bring your meetings into the loop.** In the pre-work you connected Claude Code to [Granola](https://www.granola.ai) (see [Section 2.6 of the pre-work](pre-work-setup.md#26-granola-app--connect-it-to-claude-code)). You didn't need it for the dashboard, but it's built for the capstone: record your stakeholder meetings in Granola, then start a Claude Code session and ask things like *"From this week's meeting notes, what did the client ask us to change?"* or *"Draft tasks in TASKS.md from the decisions in yesterday's kickoff."* The same plan-track-build workflow, now starting from what was actually said in the room.
