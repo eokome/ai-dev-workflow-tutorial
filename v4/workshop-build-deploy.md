@@ -23,7 +23,7 @@
   - [4.4 Merge to main](#44-merge-to-main)
 - [Section 5: Deploy (~15 min)](#section-5-deploy-15-min)
 - [Section 6: Final verification checklist](#section-6-final-verification-checklist)
-- [Comprehensive troubleshooting](#comprehensive-troubleshooting)
+- [Troubleshooting](#troubleshooting)
 - [Glossary](#glossary)
 
 ---
@@ -812,238 +812,33 @@ Make sure your `TASKS.md`, `prd/`, and `docs/superpowers/` files are included in
 
 ---
 
-## Comprehensive troubleshooting
+## Troubleshooting
 
-This section covers the most common issues people encounter. For each problem, you'll find three parts: what you see (the symptom), why it happens (the root cause), and how to fix it (the solution).
+Something will break -- a command won't run, the app won't start, a push gets rejected. That's normal, and you already have the best debugging tool installed: Claude Code.
 
----
+**Ask Claude Code first.** It can see your project, read the error, run commands to investigate, and usually fix the problem for you. Give it the specifics:
 
-### TASKS.md and the code are out of sync
+- Paste the **exact** error message -- don't paraphrase it.
+- Say what you were trying to do and what you expected to happen.
+- If the first fix doesn't work, paste the new error and let it try again.
 
-**What you see:** You committed code but the task is still sitting in In Progress (or To Do) in `TASKS.md`, or a task shows as Done but the criteria checkboxes are still empty.
+For example:
 
-**Why it happens:** Nothing updated the file. Unlike a web tracker with a "move to Done" button, `TASKS.md` only changes when you or Claude edit it. It's easy to implement a task, commit the code, and forget the board.
-
-**How to fix it:**
-
-1. Ask Claude Code to reconcile the board with what's actually built:
-   ```
-   Compare TASKS.md against the current code and commits. For each task that's actually implemented, check off its criteria, add the commit hash, and move it to Done. Tell me which tasks still have unmet criteria.
-   ```
-2. Make updating the board part of your rhythm: implement -> test -> **update TASKS.md** -> commit (with the board change in the same commit). If you keep forgetting, add a reminder to `v4/CLAUDE.md` so Claude prompts you every time.
-
-> **Remember the two lists.** Claude Code's live, in-session checklist (the one that ticks off as it works) is *not* `TASKS.md`. It vanishes when the session ends. Only edits to the `TASKS.md` file are saved. If your board looks empty after restarting Claude Code, you were probably looking at the in-session list -- open the actual file in Cursor.
-
----
-
-### Skill auto-invocation didn't fire
-
-**What you see:** You sent Claude a prompt like "Help me design and plan...", but Claude didn't announce a skill (no `Using brainstorming to...` line) and instead just started writing code or asking generic questions.
-
-**Why it happens:** The Superpowers SessionStart hook didn't load the `using-superpowers` skill, or your prompt didn't match the skill's trigger words strongly enough.
-
-**How to fix it:**
-
-1. Confirm Superpowers is loaded. At the top of your Claude Code session output, look for `You have superpowers`. If it's missing, see the pre-work troubleshooting for "Superpowers plugin not loaded."
-
-2. Strengthen your prompt with explicit intent words. Instead of "let's work on the dashboard," try "Help me design and plan the dashboard." The brainstorming skill triggers on words like *design*, *plan*, *brainstorm*.
-
-3. As a last resort, force the skill manually inside Claude Code:
-   ```
-   Use the brainstorming skill to design the e-commerce sales dashboard from @prd/ecommerce-analytics.md.
-   ```
-
----
-
-### ModuleNotFoundError
-
-**What you see:** Running `streamlit run app.py` produces `ModuleNotFoundError: No module named 'streamlit'` (or 'pandas' or 'plotly').
-
-**Why it happens:** Python can't find the required package because either (a) the virtual environment isn't activated, or (b) the package was never installed. The virtual environment is an isolated Python installation; packages installed inside it aren't visible outside it, and vice versa.
-
-**How to fix it:**
-
-1. Check if your virtual environment is active. Look for `(venv)` at the beginning of your terminal prompt.
-
-2. If it's not active, activate it:
-   ```bash
-   source venv/bin/activate       # macOS
-   # or: venv\Scripts\activate    # Windows
-   ```
-
-3. If the environment is active but the package is still missing, install it:
-   ```bash
-   pip install streamlit pandas plotly
-   ```
-   Or, if a `requirements.txt` file exists:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Retry: `streamlit run app.py`
-
----
-
-### Port 8501 already in use
-
-**What you see:** Streamlit reports `Port 8501 is already in use` when you try to run the app.
-
-**Why it happens:** A previous Streamlit session is still running in another terminal tab or window. Each Streamlit instance needs its own port, and port 8501 is Streamlit's default.
-
-**How to fix it:**
-
-Option A -- Use a different port:
-```bash
-streamlit run app.py --server.port 8502
 ```
-Then open `http://localhost:8502` in your browser.
-
-Option B -- Stop the existing process:
-
-On macOS:
-```bash
-lsof -ti:8501 | xargs kill
+I ran `streamlit run app.py` and got this error:
+<paste the full error here>
+What's wrong and how do I fix it?
 ```
 
-On Windows:
-```bash
-netstat -ano | findstr :8501
-# Note the PID (last column), then:
-taskkill /PID <PID> /F
-```
+This handles the large majority of what goes wrong in this workshop -- wrong file paths, a missing package, a port already in use, a rejected push, a merge conflict. Let Claude diagnose before you go hunting through documentation.
 
-Then retry: `streamlit run app.py`
+**Three habits that fix things before you even ask:**
 
----
+- **Read the error.** It usually names the problem, and sometimes the fix.
+- **Open a new terminal.** This alone clears most "command not found" errors right after you install a tool.
+- **Check where you are.** Run `pwd` -- Git and Streamlit commands only work inside your project folder.
 
-### Dashboard shows no data or errors on load
-
-**What you see:** The dashboard loads but shows no charts, displays "NaN" values, or throws a data-related error.
-
-**Why it happens:** The CSV file path in your code doesn't match the actual file location, or the data file has an unexpected structure. This commonly occurs when the code uses a relative path that resolves differently depending on where you run the command.
-
-**How to fix it:**
-
-1. Verify the data file exists:
-   ```bash
-   ls data/sales-data.csv
-   ```
-
-2. Check the file has content:
-   ```bash
-   head -5 data/sales-data.csv     # macOS
-   # or: Get-Content data/sales-data.csv -First 5    # Windows
-   ```
-   You should see column headers and data rows.
-
-3. Check what path your code is using. Open `app.py` and look for the line that loads the CSV (usually something like `pd.read_csv(...)`). Ensure the path matches the actual file location.
-
-4. If the path is wrong, ask Claude to fix it:
-   ```
-   The dashboard cannot find the CSV file. The file is at data/sales-data.csv. Fix the data loading path.
-   ```
-
----
-
-### Can't push -- permission denied
-
-**What you see:** `git push` fails with `Permission denied` or `remote: Permission to LMU-ISBA/ai-dev-workflow-tutorial.git denied`.
-
-**Why it happens:** Your local repository is pointed at the original repository rather than your fork. You can pull from the original but can't push to it -- you can only push to your own fork.
-
-**How to fix it:**
-
-1. Check your remote URL:
-   ```bash
-   git remote -v
-   ```
-
-2. If you see `LMU-ISBA` in the URL (instead of your username), update it:
-   ```bash
-   git remote set-url origin https://github.com/YOUR-USERNAME/ai-dev-workflow-tutorial.git
-   ```
-   Replace `YOUR-USERNAME` with your actual GitHub username.
-
-3. Verify the fix:
-   ```bash
-   git remote -v
-   ```
-   The URL should now show your username.
-
-4. Retry the push: `git push`
-
----
-
-### Git merge conflicts
-
-**What you see:** When merging the feature branch into main, Git reports "merge conflict" and stops.
-
-**Why it happens:** Both branches modified the same part of the same file, and Git can't automatically determine which version to keep. This is uncommon in this tutorial (since you're the only developer), but can happen if you made manual changes to `main` during the workshop.
-
-**How to fix it:**
-
-1. Ask Claude for help:
-   ```
-   I have a merge conflict. Can you help me resolve it?
-   ```
-   Claude can read the conflicting files and suggest resolutions.
-
-2. Alternatively, if you want to simply take all changes from your feature branch (the most common resolution in this tutorial):
-   ```
-   Resolve all merge conflicts by accepting the feature branch changes, then complete the merge.
-   ```
-
-3. After resolution, commit and push as normal.
-
----
-
-### "Not a git repository" error
-
-**What you see:** Git commands fail with `fatal: not a git repository (or any of the parent directories)`.
-
-**Why it happens:** Your terminal is in a directory that isn't inside your project. Git commands only work when you're inside a directory that has been initialized with Git (contains a `.git` folder).
-
-**How to fix it:**
-
-1. Check your current directory:
-   ```bash
-   pwd
-   ```
-
-2. Navigate to your project:
-   ```bash
-   cd ~/GitHub/ai-dev-workflow-tutorial    # macOS
-   # or: cd C:\Users\YourName\GitHub\ai-dev-workflow-tutorial    # Windows
-   ```
-   Adjust the path to wherever you cloned the repository.
-
-3. Verify you're in the right place:
-   ```bash
-   ls .git
-   ```
-   You should see Git's internal directory.
-
----
-
-### Claude Code rate limits
-
-**What you see:** Claude Code responds with a rate limit message or becomes slow to respond.
-
-**Why it happens:** Your Claude Pro subscription has a usage cap per time period. Heavy usage during implementation (especially with multiple large file edits) can approach this cap.
-
-**How to fix it:**
-
-1. **Wait a few minutes.** Rate limits typically reset on a rolling window. A 5-10 minute break is usually sufficient.
-
-2. **Work in smaller increments.** Instead of asking Claude to implement an entire feature at once, break requests into smaller pieces:
-   ```
-   # Instead of: "Implement the entire dashboard"
-   # Try: "Create the KPI scorecards section of app.py"
-   ```
-
-3. **Use plan mode.** Press Shift+Tab to switch to plan mode. Claude explains what it'll do without making changes, using fewer tokens. Review the plan, then ask Claude to execute it.
-
-4. **Upgrade if needed.** If you consistently hit limits, Claude Max (from $100/month) provides higher usage caps. Most people find Pro sufficient for the tutorial sessions.
+**Still stuck?** Post in the Teams General channel with what you were doing, the exact error, and what you already tried. Someone will help.
 
 ---
 
