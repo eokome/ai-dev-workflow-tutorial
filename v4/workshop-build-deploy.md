@@ -147,13 +147,15 @@ As you work, Claude Code shows its own live checklist while it's thinking -- you
 
    Confirm `You have superpowers` appears in the banner. If it doesn't, see the troubleshooting section.
 
-2. **Set the output style to explanatory.** Inside Claude Code, type:
+2. **Set the output style to Explanatory.** Inside Claude Code, open the settings menu:
 
    ```
-   /output-style explanatory
+   /config
    ```
 
-   By default, Claude Code keeps its responses short. Setting the style to "explanatory" tells Claude to explain what it's doing and why, which helps you learn from its work instead of just receiving code. This is especially useful while you're still learning the workflow.
+   Use the arrow keys to select **Output style**, then choose **Explanatory** and press Enter. By default, Claude Code keeps its responses short; the Explanatory style tells Claude to explain what it's doing and why as it works, which helps you learn from it instead of just receiving code. The choice saves to your project's `.claude/settings.local.json` and persists across sessions, so you only set it once.
+
+   > **Prefer editing the file?** You can set the same thing directly by adding `"outputStyle": "Explanatory"` to `.claude/settings.local.json`. (The older `/output-style` command was removed in a recent Claude Code update, which is why it no longer works.)
 
 3. **Read the PRD first.** Your task board should reflect what the project needs to deliver -- and that's spelled out in the product requirements document.
 
