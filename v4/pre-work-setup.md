@@ -37,11 +37,11 @@ Tracking:  A TASKS.md file in your repo (no extra account needed)
 Meetings:  Granola connected to Claude Code (for your capstone)
 ```
 
-**See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up -- it takes about 30 seconds.)
+**See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up, which takes about 30 seconds.)
 
-> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you've already got Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams General channel and someone will help.
+> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you've already got Claude Code set up, just ask it, since it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams General channel and someone will help.
 
-> **Heads up:** Websites and software update their interfaces regularly. A button label, sign-up flow, or menu option described here may look slightly different by the time you go through it. This is normal -- the core steps stay the same even when the UI changes. If something doesn't match exactly, read the screen, figure out the equivalent step, and keep going. That adaptability is itself a professional skill.
+> **Heads up:** Websites and software update their interfaces regularly. A button label, sign-up flow, or menu option described here may look slightly different by the time you go through it. This is normal; the core steps stay the same even when the UI changes. If something doesn't match exactly, read the screen, figure out the equivalent step, and keep going. That adaptability is itself a professional skill.
 
 ---
 
@@ -61,7 +61,7 @@ You're setting up that same pipeline, end to end. When you finish, you'll have a
 
 ### Your competitive advantage
 
-Most analysts can build a model in a notebook. Fewer can turn that model into a live dashboard and deploy it. That gap is your opportunity -- in your capstone and in job interviews.
+Most analysts can build a model in a notebook. Fewer can turn that model into a live dashboard and deploy it. That gap is your opportunity, in your capstone and in job interviews.
 
 ### What you'll be able to do after Part 1
 
@@ -70,19 +70,9 @@ Most analysts can build a model in a notebook. Fewer can turn that model into a 
 - Use AI to accelerate building (Claude Code)
 - Plan before you build (Superpowers' brainstorming and writing-plans skills)
 - Edit code in a modern, AI-aware editor (Cursor)
-- Bring meeting notes into your AI workflow (Granola connected to Claude Code) -- for your capstone stakeholder meetings
+- Bring meeting notes into your AI workflow (Granola connected to Claude Code) for your capstone stakeholder meetings
 
-### Traditional vs. AI-assisted development
-
-| Traditional Approach | AI-Assisted Approach |
-|---------------------|---------------------|
-| Search Google, copy from Stack Overflow | Ask Claude Code to explain and implement |
-| Hours debugging with print statements | AI analyzes errors and suggests fixes |
-| Write boilerplate code manually | AI generates scaffolding; you focus on business logic |
-| Learn frameworks by reading documentation | AI teaches you as you build |
-| Work alone, limited by your own knowledge | AI as a second perspective when you get stuck |
-
-The AI-assisted approach doesn't replace understanding. It accelerates it. You still need to know what you're building and why. The AI handles much of the how.
+AI-assisted development doesn't replace understanding. It accelerates it. You still need to know what you're building and why. The AI handles much of the how.
 
 ---
 
@@ -112,7 +102,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 - **GitHub** stores your code in the cloud so it's safe, shareable, and versioned.
 - **Git** is the version control engine that tracks every change you make.
-- **TASKS.md** is a plain-text task board that lives in your repository. It tracks what to build and what's done, and because it's just a file, Claude Code can read and update it directly -- no separate account or web app to switch to. The board holds your milestones -- the major deliverables, with IDs like TASK-1 -- and the plan you write in Part 2 breaks each milestone into the smaller build tasks Claude Code works through.
+- **TASKS.md** is a plain-text task board that lives in your repository. It tracks what to build and what's done, and because it's just a file, Claude Code can read and update it directly, with no separate account or web app to switch to. The board holds your milestones (the major deliverables, with IDs like TASK-1), and the plan you write in Part 2 breaks each milestone into the smaller build tasks Claude Code works through.
 - **Cursor** is your code editor, where you write and organize files.
 - **Claude Code** is an AI coding agent that runs in your terminal, reads your project, and helps you build.
 - **Superpowers** is a Claude Code plugin whose skills (brainstorming, writing-plans, executing-plans) turn requirements into bite-sized implementation tasks before you start coding.
@@ -134,13 +124,13 @@ The following diagram shows every tool you'll install and how they connect. Refe
 3. If signing up manually, check your email for a verification code and enter it when prompted. You may be asked to sign in again with your new credentials after verifying.
 4. Complete any onboarding prompts if they appear (you may go directly to the dashboard).
 
-**Username guidance:** Your GitHub username becomes part of your public profile URL (`github.com/your-username`). Choose something professional -- your name or a clean variation of it. Avoid numbers that look like birth years, inside jokes, or anything you wouldn't put on a resume. Letters, numbers, and single hyphens are the only characters allowed.
+**Username guidance:** Your GitHub username becomes part of your public profile URL (`github.com/your-username`). Choose something professional, like your name or a clean variation of it. Avoid numbers that look like birth years, inside jokes, or anything you wouldn't put on a resume. Letters, numbers, and single hyphens are the only characters allowed.
 
 > **Checkpoint:** You can log into github.com and see your dashboard.
 
-> **Pro Tip:** Your GitHub profile is a portfolio. The projects you build -- in this tutorial, in your capstone, on your own -- are all visible. A GitHub profile with well-documented projects shows employers you can build, not just analyze. Choose your username carefully. You'll use it for years.
+> **Pro Tip:** Your GitHub profile is a portfolio. The projects you build (in this tutorial, in your capstone, on your own) are all visible. A GitHub profile with well-documented projects shows employers you can build, not just analyze. Choose your username carefully. You'll use it for years.
 
-> **Where's the task-tracking account?** Earlier versions of this tutorial had you create a Jira account here. Version 4 tracks work in a `TASKS.md` file that lives in your repository instead, so there's no third account to create. You'll set that file up in Part 2. Why the change? A task file is versioned with your code, diffs cleanly in Git, works offline, and -- most importantly -- Claude Code can read and edit it directly without connecting to an outside service. You still get the same discipline (every task tracked from *To Do* to *Done*), with less setup and tighter integration. More on the "why" when you build it.
+> **Where's the task-tracking account?** Earlier versions of this tutorial had you create a Jira account here. Version 4 tracks work in a `TASKS.md` file that lives in your repository instead, so there's no third account to create. You'll set that file up in Part 2. Why the change? A task file is versioned with your code, diffs cleanly in Git, works offline, and, most importantly, Claude Code can read and edit it directly without connecting to an outside service. You still get the same discipline (every task tracked from *To Do* to *Done*), with less setup and tighter integration. More on the "why" when you build it.
 
 ---
 
@@ -154,7 +144,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 2. On the pricing page, click **Try Claude** under the **Pro** plan.
 3. Enter payment information and complete the subscription ($17/month with annual billing, or $20/month billed monthly).
 
-**A note about Pro vs. Max:** Most students find Claude Pro sufficient for this tutorial and their coursework. You only need the Pro subscription for one month to complete this tutorial. If you hit usage limits during intensive work sessions, Claude Max (from $100/month) provides higher limits. You can always upgrade later if needed. You can cancel your subscription after completing the tutorial, but it's highly recommended that you resubscribe when you start your capstone project -- Claude Code is just as useful there. You can also apply what you learn here to other classes or your job if you're working.
+**A note about Pro vs. Max:** Most students find Claude Pro sufficient for this tutorial and their coursework. You only need the Pro subscription for one month to complete this tutorial. If you hit usage limits during intensive work sessions, Claude Max (from $100/month) provides higher limits. You can always upgrade later if needed. You can cancel your subscription after completing the tutorial, but it's highly recommended that you resubscribe when you start your capstone project; Claude Code is just as useful there. You can also apply what you learn here to other classes or your job if you're working.
 
 **If the subscription cost is a concern,** message me on Teams. I don't want that to be a blocker for anyone.
 
@@ -164,14 +154,14 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 ### 1.3 Granola account and student plan
 
-> **Why Granola?** Granola is an AI notepad for meetings. It listens while you talk, then turns the conversation into clean, searchable notes -- so you can pay attention instead of scrambling to type. You won't need it to build the dashboard in this tutorial. You set it up now because it pays off in your **capstone**: when you meet with stakeholders, Granola captures what was said, and later (in Section 2.6) you'll connect it to Claude Code so you can pull those meeting notes straight into a build session -- "what did the client ask for in Tuesday's meeting?" answered from your actual notes, not your memory.
+> **Why Granola?** Granola is an AI notepad for meetings. It listens while you talk, then turns the conversation into clean, searchable notes, so you can pay attention instead of scrambling to type. You won't need it to build the dashboard in this tutorial. You set it up now because it pays off in your **capstone**: when you meet with stakeholders, Granola captures what was said, and later (in Section 2.6) you'll connect it to Claude Code so you can pull those meeting notes straight into a build session: "what did the client ask for in Tuesday's meeting?" answered from your actual notes, not your memory.
 
 **Steps:**
 
 1. Go to [granola.ai/students](https://www.granola.ai/students) and click **Apply**. Sign up with your **school email** and follow the prompts to verify you're a current student.
 2. The student plan gives you **12 months of Granola Business free**. It's available to enrolled students at accredited universities in the **US, UK, and Canada**.
 
-> **Not eligible for the student plan?** No problem. Granola's free **Basic** plan works with everything in this tutorial -- the only limit is that Claude Code can query your notes from the **last 30 days** rather than your whole history. Sign up at [granola.ai](https://www.granola.ai) without the student application.
+> **Not eligible for the student plan?** No problem. Granola's free **Basic** plan works with everything in this tutorial; the only limit is that Claude Code can query your notes from the **last 30 days** rather than your whole history. Sign up at [granola.ai](https://www.granola.ai) without the student application.
 
 > **Checkpoint:** You can sign in to your Granola account (student application submitted or approved).
 
@@ -183,7 +173,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 Before installing any tools, you need to understand the terminal, the interface where you'll run installation commands, interact with Git, and launch Claude Code.
 
-> **What is a terminal?** A terminal (also called a command line or CLI) is a text-based interface where you type commands instead of clicking buttons. Professional developers use a terminal daily. It might feel unfamiliar at first, but by the end of this tutorial, you'll be comfortable with the essential commands. You don't need to memorize everything -- Claude Code itself runs in the terminal and can help you with commands when you need it.
+> **What is a terminal?** A terminal (also called a command line or CLI) is a text-based interface where you type commands instead of clicking buttons. Professional developers use a terminal daily. It might feel unfamiliar at first, but by the end of this tutorial, you'll be comfortable with the essential commands. You don't need to memorize everything; Claude Code itself runs in the terminal and can help you with commands when you need it.
 
 **Opening the terminal in Cursor:**
 
@@ -207,7 +197,7 @@ You can resize the terminal by dragging the divider between it and the editor ar
 
 **Essential terminal concepts:**
 
-- **The prompt** (`$` on macOS/Linux, `>` on Windows) is the symbol that tells you the terminal is ready for your command. You don't type the prompt character itself -- it's already there.
+- **The prompt** (`$` on macOS/Linux, `>` on Windows) is the symbol that tells you the terminal is ready for your command. You don't type the prompt character itself; it's already there.
 - **Running commands** follows the pattern: `command [options] [arguments]`. For example, `git --version` runs the `git` command with the `--version` option.
 - **`pwd`** (print working directory) shows you where you are in the file system. Think of it as "where am I right now?"
 - **`ls`** (list) shows the files and folders in your current directory. On Windows, use `dir` instead.
@@ -216,7 +206,7 @@ You can resize the terminal by dragging the divider between it and the editor ar
 - **Ctrl+C** stops a running command. If something seems stuck or you made a mistake, press Ctrl+C to cancel.
 - **Arrow keys**: Press the up arrow to recall previous commands. This is faster than retyping them.
 
-> **Why open a new terminal after installing tools?** When you install a tool, it updates your system's **PATH** -- the list of directories your computer checks when looking for programs. Terminals that are already open loaded the PATH when they started and don't automatically see updates. Opening a new terminal (Terminal --> New Terminal) loads the fresh PATH with the newly installed tool. This is the most common reason for "command not found" errors after installation.
+> **Why open a new terminal after installing tools?** When you install a tool, it updates your system's **PATH**, the list of directories your computer checks when looking for programs. Terminals that are already open loaded the PATH when they started and don't automatically see updates. Opening a new terminal (Terminal --> New Terminal) loads the fresh PATH with the newly installed tool. This is the most common reason for "command not found" errors after installation.
 
 You'll see reminders about this throughout the installation steps. If a tool doesn't seem to work after installing it, your first step should always be to open a new terminal.
 
@@ -256,7 +246,7 @@ You'll see reminders about this throughout the installation steps. If a tool doe
 
 ### 2.2 Git
 
-> **What is Git?** Git is **version control** software -- it tracks every change to your files over time. Instead of ending up with `report_v2_final_REAL.xlsx`, Git maintains a clean history of what changed, when, who changed it, and why. It's standard in software development and data engineering. Every company you'll work at uses Git or something built on top of it.
+> **What is Git?** Git is **version control** software; it tracks every change to your files over time. Instead of ending up with `report_v2_final_REAL.xlsx`, Git maintains a clean history of what changed, when, who changed it, and why. It's standard in software development and data engineering. Every company you'll work at uses Git or something built on top of it.
 
 ```
 Without Git:                    With Git:
@@ -289,9 +279,9 @@ If you see a version number (for example, `git version 2.39.0`), Git is already 
 
 1. Download the installer from [git-scm.com/download/win](https://git-scm.com/download/win) (64-bit recommended).
 2. Run the installer. Most defaults are fine, but pay attention to these settings:
-   - Select **"Use Git from Git Bash and also from 3rd-party software"** -- this ensures Git works in Cursor's terminal.
+   - Select **"Use Git from Git Bash and also from 3rd-party software"** so Git works in Cursor's terminal.
    - Select **"Use the OpenSSL library"**
-   - Select **"Checkout Windows-style, commit Unix-style line endings"** -- this prevents line ending issues when collaborating with macOS users.
+   - Select **"Checkout Windows-style, commit Unix-style line endings"** to prevent line ending issues when collaborating with macOS users.
    - Accept other defaults.
 3. After installation, **restart Cursor** completely (close and reopen it).
 
@@ -312,7 +302,7 @@ git config --global user.email "your.email@example.com"
 
 ### 2.3 Python 3.11+
 
-> **Why Python?** Python is the dominant language in data science, analytics, and AI. Pandas, scikit-learn, TensorFlow, Streamlit -- the tools you use in your coursework and will use in your career are all Python-based. You need Python 3.11 or higher installed so you can run the dashboard application you'll build in Part 2.
+> **Why Python?** Python is the dominant language in data science, analytics, and AI. Pandas, scikit-learn, TensorFlow, Streamlit: the tools you use in your coursework and will use in your career are all Python-based. You need Python 3.11 or higher installed so you can run the dashboard application you'll build in Part 2.
 
 **Check your current version:**
 
@@ -330,7 +320,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 **macOS install:**
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page). You may also see a "Python install manager" option -- ignore it and use the standard installer.
+1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page). You may also see a "Python install manager" option; ignore it and use the standard installer.
 2. Open the `.pkg` file and follow the installation wizard.
 3. On the final screen, click **Install Certificates** if that option appears. This installs SSL certificates Python needs to make secure web requests.
 4. Open a **new terminal** (Terminal --> New Terminal).
@@ -338,7 +328,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 **Windows install:**
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page). You may also see a "Python install manager" option -- ignore it and use the standard installer.
+1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page). You may also see a "Python install manager" option; ignore it and use the standard installer.
 2. Run the installer. **Critical: Check the box "Add Python to PATH"** at the bottom of the first screen. If you miss this step, Windows won't know where to find Python when you type `python` in the terminal.
 3. Click **Install Now** and complete installation.
 4. Open a **new terminal** (Terminal --> New Terminal).
@@ -352,7 +342,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 ### 2.4 Claude Code
 
-> **What is Claude Code?** Unlike the Claude web interface at claude.ai where you chat in a browser, Claude Code runs *directly in your terminal*, inside your project. It can read your files, write code, run commands, execute tests, and even update your project's task list as it works. It's an AI agent that can see your entire project and make changes alongside you. This is different from copying code out of a chat window -- Claude Code works inside your development environment.
+> **What is Claude Code?** Unlike the Claude web interface at claude.ai where you chat in a browser, Claude Code runs *directly in your terminal*, inside your project. It can read your files, write code, run commands, execute tests, and even update your project's task list as it works. It's an AI agent that can see your entire project and make changes alongside you. This is different from copying code out of a chat window; Claude Code works inside your development environment.
 
 **Step 1: Install Claude Code**
 
@@ -394,7 +384,7 @@ After installation, open a **new terminal** (Terminal --> New Terminal) so the P
 
 Skills are markdown files that ship with the Superpowers plugin. Each one teaches Claude how to handle a specific type of task. When you ask Claude to design something, the brainstorming skill activates. When you ask Claude to implement a plan, the executing-plans skill activates. Claude reads each skill's description at session start and matches your prompt against those descriptions to decide which skill to load. Claude announces which skill it's using, like "Using brainstorming to..." That visibility is the whole reason this works as a teaching tool.
 
-Here's the flow you'll see in Part 2 -- you never call a skill by name; your plain-English prompt triggers the chain:
+Here's the flow you'll see in Part 2: you never call a skill by name; your plain-English prompt triggers the chain:
 
 ```
 You type a plain-English prompt
@@ -443,7 +433,7 @@ You'll only ever type one slash command for the entire tutorial: the install com
 
 ### 2.6 Granola app + connect it to Claude Code
 
-This is the payoff of the Granola account you made in Section 1.3. You'll install the app and then give Claude Code the ability to read your meeting notes. Again: you don't use this to build the dashboard -- it's here so it's ready for your capstone.
+This is the payoff of the Granola account you made in Section 1.3. You'll install the app and then give Claude Code the ability to read your meeting notes. Again: you don't use this to build the dashboard; it's here so it's ready for your capstone.
 
 > **What is MCP?** MCP (Model Context Protocol) is how Claude Code connects to outside services. Think of it as a port you can plug tools into: once you plug in Granola, Claude Code can search and read your meeting notes without you copying and pasting anything. (Notice the contrast with how this tutorial tracks tasks: your `TASKS.md` board is just a file Claude Code already reads, so it needs no MCP. Meeting notes live in Granola's cloud, so MCP is how Claude reaches them. Use a plain file when you can; use MCP when the data lives somewhere else.)
 
@@ -476,7 +466,7 @@ The top half (record -> transcribe -> sync) happens in the Granola app. The bott
 
 1. Download the Granola desktop app from [granola.ai](https://www.granola.ai) and install it.
 2. Open Granola and sign in with the account you created in Section 1.3.
-3. *(Optional but useful)* Record one short test note -- even a few minutes of a lecture or a chat with a classmate -- so you have something for Claude Code to find later. Check the email your account uses under **Settings** if you're unsure which login to use.
+3. *(Optional but useful)* Record one short test note (even a few minutes of a lecture or a chat with a classmate) so you have something for Claude Code to find later. Check the email your account uses under **Settings** if you're unsure which login to use.
 
 **Connect it to Claude Code:**
 
@@ -500,7 +490,7 @@ The top half (record -> transcribe -> sync) happens in the Granola app. The bott
 
    You'll see `granola` listed, likely showing that authentication is required.
 
-7. Select `granola` with the **arrow keys**, press **Enter**, and choose **Authenticate**. A browser window opens -- sign in to Granola with the **same email** as your account, authorize the connection, and return to the terminal.
+7. Select `granola` with the **arrow keys**, press **Enter**, and choose **Authenticate**. A browser window opens; sign in to Granola with the **same email** as your account, authorize the connection, and return to the terminal.
 
 8. Test it. In Claude Code, ask:
 
@@ -510,7 +500,7 @@ The top half (record -> transcribe -> sync) happens in the Granola app. The bott
 
    Claude uses Granola's `get_account_info` tool and replies with your email and workspace. This works even if you have no notes yet, which makes it a clean way to confirm the connection. If you recorded a test note in step 3, try: `Summarize my most recent meeting.`
 
-> **If it can't reach your notes:** Run `/mcp`, select `granola`, and re-authenticate. If you see "Unauthorized: user has not created a Granola account yet," you signed in with a different email than your Granola account -- check the account email in Granola's **Settings** and reconnect with that one.
+> **If it can't reach your notes:** Run `/mcp`, select `granola`, and re-authenticate. If you see "Unauthorized: user has not created a Granola account yet," you signed in with a different email than your Granola account; check the account email in Granola's **Settings** and reconnect with that one.
 
 > **How you'll use this in your capstone:** After a stakeholder meeting, open a Claude Code session in your capstone repo and ask things like *"From my meeting notes this week, list what the client asked us to change,"* or *"Draft tasks in TASKS.md based on the decisions in yesterday's kickoff."* Your meeting record flows straight into the plan-and-build workflow you're learning here.
 
@@ -839,7 +829,7 @@ Every tool you just set up transfers directly to your capstone project: Git and 
 **With setup done, you're ready for Part 2.** In the build guide, you'll put everything together:
 
 1. **Set up your `TASKS.md` board** so you (and Claude Code) can track every task from *To Do* to *Done*, all inside your repository.
-2. **Plan with Superpowers** -- let the brainstorming skill produce a design document, then writing-plans turn it into a bite-sized implementation plan.
+2. **Plan with Superpowers** by letting the brainstorming skill produce a design document, then having writing-plans turn it into a bite-sized implementation plan.
 3. **Build a Streamlit dashboard** with Claude Code's help, working from the structured plan.
 4. **Commit, push, and deploy** your dashboard so it's live and shareable on the internet.
 

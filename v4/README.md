@@ -72,14 +72,14 @@ Every technology company uses a variation of this workflow. You'll experience th
 └─────────┘    └──────────┘    └─────────┘    └────────────────────────────────┘
 ```
 
-1. **PRD** (Product Requirements Document) -- Start with a written specification of what to build
-2. **TASKS.md** -- Draft your milestones (the deliverables, with IDs like TASK-1) from the PRD into a Markdown board in your repo
-3. **brainstorming** -- A Superpowers skill that asks clarifying questions and produces a design document
-4. **writing-plans** -- A Superpowers skill that turns the design into a bite-sized implementation plan covering your milestones
-5. **executing-plans** -- A Superpowers skill that builds the feature with Claude Code, implementing each task test-first
-6. **Commit** -- Save your changes with a meaningful message linked to the milestone ID
-7. **Push** -- Upload your code to GitHub
-8. **Deploy** -- Make your dashboard publicly accessible
+1. **PRD** (Product Requirements Document): Start with a written specification of what to build
+2. **TASKS.md**: Draft your milestones (the deliverables, with IDs like TASK-1) from the PRD into a Markdown board in your repo
+3. **brainstorming**: A Superpowers skill that asks clarifying questions and produces a design document
+4. **writing-plans**: A Superpowers skill that turns the design into a bite-sized implementation plan covering your milestones
+5. **executing-plans**: A Superpowers skill that builds the feature with Claude Code, implementing each task test-first
+6. **Commit**: Save your changes with a meaningful message linked to the milestone ID
+7. **Push**: Upload your code to GitHub
+8. **Deploy**: Make your dashboard publicly accessible
 
 ## Key concepts
 
