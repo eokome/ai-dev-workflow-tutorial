@@ -160,7 +160,7 @@ As you work, Claude Code shows its own live checklist while it's thinking; you'l
 
    > **What is a PRD?** A PRD (Product Requirements Document) is a written description of what you're building and why. It defines the problem, the users, the features, and what success looks like. In professional settings, a PRD is written before any code.
 
-   Open the [PRD](../prd/ecommerce-analytics.md) and skim it (in your browser, or open `prd/ecommerce-analytics.md` in Cursor). Look at two sections in particular: **Acceptance Criteria** and **Timeline and Milestones**. The PRD already sketches the deliverables your board will track; you're not inventing them from scratch.
+   Open the [PRD](prd/ecommerce-analytics.md) and skim it (in your browser, or open `prd/ecommerce-analytics.md` in Cursor). Look at two sections in particular: **Acceptance Criteria** and **Timeline and Milestones**. The PRD already sketches the deliverables your board will track; you're not inventing them from scratch.
 
 4. **Create your task board from the PRD.** Ask Claude Code to draft it:
 

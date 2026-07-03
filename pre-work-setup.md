@@ -583,7 +583,7 @@ Cloning downloads the repository to your computer so you can work on it locally.
 
 > **If you can't see the file explorer sidebar:** Press `Cmd+B` (macOS) or `Ctrl+B` (Windows) to toggle the sidebar. The sidebar shows your project's file and folder structure.
 
-> **Checkpoint:** Tutorial files are visible in Cursor's file explorer (left sidebar). You should see folders like `data/`, `prd/`, `docs/`, and the versioned tutorial folders `v1/` through `v4/` (you're following `v4/`), along with a `README.md` file.
+> **Checkpoint:** Tutorial files are visible in Cursor's file explorer (left sidebar). You should see the `data/`, `prd/`, and `docs/` folders, along with `README.md`, `pre-work-setup.md`, and `workshop-build-deploy.md`.
 
 ---
 
@@ -643,7 +643,7 @@ Expected: Claude returns your Granola email and workspace. Type `/exit` to close
 
 - [ ] Tutorial repo forked to your GitHub account (`github.com/[your-username]/ai-dev-workflow-tutorial`)
 - [ ] Repo cloned locally and open in Cursor
-- [ ] Files visible in Cursor's file explorer (you should see `data/`, `prd/`, the `v1/` through `v4/` tutorial folders, and `README.md`)
+- [ ] Files visible in Cursor's file explorer (you should see `data/`, `prd/`, `docs/`, and the `README.md`, `pre-work-setup.md`, and `workshop-build-deploy.md` files)
 
 ---
 

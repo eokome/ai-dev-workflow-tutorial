@@ -1,26 +1,23 @@
 # AI-Assisted Development Workflow Tutorial
 
-Learn a professional development workflow by building and deploying a real project: an e-commerce sales dashboard.
+This tutorial teaches you a professional development workflow by having you build and deploy a real project: an e-commerce sales dashboard.
 
-```
-┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌────────┐
-│   PRD   │ -> │   TASKS.md   │ -> │ brainstorming│ -> │writing-plans │ -> │  Code  │
-│(written)│    │ (milestones) │    │ (design doc) │    │ (impl plan)  │    │(Claude)│
-└─────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └────────┘
-                                                                            │
-┌─────────┐    ┌───────────┐    ┌─────────┐    ┌───────────────────────────────┐
-│  Live!  │ <- │  Deploy   │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
-│(public) │    │(Streamlit)│    │(GitHub) │    │ on a feature branch           │
-└─────────┘    └───────────┘    └─────────┘    └───────────────────────────────┘
-```
+You'll work through it in two parts:
 
-See the finished product: https://sales-dashboard-greg-lontok.streamlit.app/
+| Part | What you do | Time |
+|------|-------------|------|
+| [Part 1: Setup](pre-work-setup.md) | Set up accounts, install tools, get your repo ready | 70–100 min |
+| [Part 2: Build & Deploy](workshop-build-deploy.md) | Plan with [Superpowers](https://github.com/obra/superpowers) (a skills add-on for Claude Code), track work in `TASKS.md`, build with Claude Code, deploy live | ~3 hours |
 
 ## Why this matters
 
 Building with technology in 2026 looks different than it did two years ago. AI assistants have moved from experimental to essential, and companies are looking for people who can work with them effectively.
 
-This isn't about becoming a software engineer. It's about being able to build solutions with technology and data -- dashboards, automated workflows, prototypes -- regardless of your specific role.
+Claude Code, the tool you'll use throughout this tutorial, is Anthropic's AI coding agent. Unlike a chatbot that only suggests code, it works in your terminal to read your project, edit files, run commands, and debug with you. Getting fluent with it now is the kind of skill companies are starting to hire for.
+
+You're not here to become a software engineer. You're here to learn how to build things when your work calls for it: a dashboard, an automated workflow, a rough prototype. Those skills carry over whether you go into analytics, consulting, or product management.
+
+You're learning this now, at the start of your career. That puts you ahead of many experienced professionals who are still adapting.
 
 | Traditional approach | AI-assisted approach |
 |---------------------|---------------------|
@@ -32,74 +29,82 @@ This isn't about becoming a software engineer. It's about being able to build so
 
 ## What you'll build
 
-A Streamlit dashboard with KPI scorecards, a sales trend chart, and breakdowns by category and region. The dashboard itself is straightforward -- the point is the workflow you use to build it: writing a spec, tracking work in a `TASKS.md` file, building with an AI assistant, committing with Git, and deploying so anyone can access it.
+A Streamlit dashboard with KPI (key performance indicator) scorecards, a sales trend chart, and breakdowns by category and region. Streamlit is an open-source Python framework for building web apps from plain Python scripts.
 
-## How it works
+```
+┌─────────────────────────────────────────────────────────────┐
+│                E-Commerce Sales Dashboard                    │
+├────────────────────────────┬────────────────────────────────┤
+│       Total Sales          │       Total Orders             │
+│       $1,234,567           │       8,432                    │
+├────────────────────────────┴────────────────────────────────┤
+│                   Sales Trend (Line Chart)                   │
+│    $                                                         │
+│    │      ╱╲        ╱╲                                       │
+│    │     ╱  ╲      ╱  ╲      ╱                              │
+│    │    ╱    ╲    ╱    ╲    ╱                               │
+│    │   ╱      ╲  ╱      ╲  ╱                                │
+│    │  ╱        ╲╱        ╲╱                                 │
+│    └──────────────────────────────────────────── time       │
+├────────────────────────────┬────────────────────────────────┤
+│    Sales by Category       │    Sales by Region             │
+│    (Bar Chart)             │    (Bar Chart)                 │
+└────────────────────────────┴────────────────────────────────┘
+```
 
-You'll set up the same tools that development teams use, then build a dashboard from a product requirements document using AI-assisted development.
+See the finished version: https://sales-dashboard-greg-lontok.streamlit.app/
 
-| Tool | What it does |
-|------|-------------|
-| GitHub | Hosts your code and tracks versions |
-| `TASKS.md` | An in-repo Markdown file that tracks tasks and requirements (current version; earlier versions used Jira) |
-| Cursor | Code editor (VS Code-based, with AI features) |
-| Claude Code | AI assistant that runs in your terminal |
-| [Superpowers](https://github.com/obra/superpowers) | A Claude Code plugin whose skills turn requirements into bite-sized plans |
-| Python + Streamlit | What you build the dashboard with |
+The dashboard itself is straightforward. The point is the workflow you use to build it.
 
-## Getting started
+## The workflow
 
-### Version 4 (current)
+Every technology company uses a variation of this workflow. You'll experience the entire cycle:
 
-Two self-paced parts -- setup, then build & deploy -- using the Superpowers Claude Code plugin for skill-driven planning and an in-repo `TASKS.md` file for task tracking (no Jira account needed).
+```
+┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌────────┐
+│   PRD   │ -> │   TASKS.md   │ -> │ brainstorming│ -> │writing-plans │ -> │  Code  │
+│(written)│    │ (milestones) │    │ (design doc) │    │ (impl plan)  │    │(Claude)│
+└─────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └────────┘
+                                                                              │
+┌─────────┐    ┌───────────┐    ┌─────────┐    ┌───────────────────────────────┐
+│  Live!  │ <- │  Deploy   │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
+│(public) │    │(Streamlit)│    │(GitHub) │    │ on a feature branch           │
+└─────────┘    └───────────┘    └─────────┘    └───────────────────────────────┘
+```
 
-1. Start with [Part 1: Setup](v4/pre-work-setup.md) -- accounts, tools, repo setup (70-100 min, at your own pace)
-2. Then [Part 2: Build & Deploy](v4/workshop-build-deploy.md) -- design, plan, track, build, and deploy the dashboard (~3 hours, self-paced)
+1. **PRD** (Product Requirements Document): Start with a written specification of what to build
+2. **TASKS.md**: Draft your milestones (the deliverables, with IDs like TASK-1) from the PRD into a Markdown board in your repo
+3. **brainstorming**: A Superpowers skill that asks clarifying questions and produces a design document
+4. **writing-plans**: A Superpowers skill that turns the design into a bite-sized implementation plan covering your milestones
+5. **executing-plans**: A Superpowers skill that builds the feature with Claude Code, implementing each task (test-first where the plan flags it)
+6. **Commit**: Save your changes with a meaningful message linked to the milestone ID
+7. **Push**: Upload your code to GitHub
+8. **Deploy**: Make your dashboard publicly accessible
 
-### Version 3 (previous)
+## Key concepts
 
-The same skill-driven build as Version 4, but tracking work in Jira via the Atlassian MCP server instead of a `TASKS.md` file.
+**Traceability.** Every piece of code traces back to a requirement. When you commit, you include the milestone ID (like TASK-1) in the message, and because `TASKS.md` is versioned in the repo, `git log` shows the whole chain from requirement to code to deployed feature.
 
-1. Start with [Pre-work: Setup](v3/pre-work-setup.md) -- accounts, tools, repo setup (60-90 min on your own)
-2. Then [Workshop: Build & Deploy](v3/workshop-build-deploy.md) -- design, plan, build, and deploy the dashboard (~3 hours, live)
+**Skill-driven development.** Instead of jumping straight to code, you let Claude's Superpowers skills run a structured process: brainstorming explores what to build, writing-plans turns that into a bite-sized plan, then executing-plans implements task by task, using TDD on the tasks the plan flags for it (test-driven development: write a failing test first, then the code to pass it). This prevents the most common failure mode: building the wrong thing fast.
 
-### Version 2 (older)
+**AI as a partner.** Claude Code isn't just a code generator. You set the direction and make the judgment calls; it supplies the speed and technical know-how, and explains its reasoning so you learn as you go.
 
-Async pre-work + a 3-hour live workshop, using GitHub spec-kit for planning.
+## What you need
 
-1. Start with [Pre-work: Setup](v2/pre-work-setup.md) -- accounts, tools, repo setup (60-90 min on your own)
-2. Then [Workshop: Build & Deploy](v2/workshop-build-deploy.md) -- plan, build, and deploy the dashboard (~3 hours, live)
+- Basic Python knowledge (if you've used pandas or written a few scripts, you're fine)
+- A computer running macOS or Windows
+- No prior experience with Git or AI coding tools
 
-### Version 1 (original)
+## Where to start
 
-The original multi-document tutorial, designed for two 100-minute sessions.
-
-| Order | Document | Description |
-|:-----:|----------|-------------|
-| 1 | [Overview](v1/00-overview.md) | What you'll build |
-| 2 | [Session 1: Setup](v1/01-session-1-setup.md) | Accounts and tools |
-| -- | [Terminal Basics](v1/02-terminal-basics.md) | Reference if you're new to the command line |
-| -- | [Git Concepts](v1/03-git-concepts.md) | Reference if you're new to version control |
-| 3 | [Session 2: Workflow](v1/04-session-2-workflow.md) | The full development workflow |
-
-Reference materials: [Troubleshooting](v1/05-troubleshooting.md) · [Capstone Setup](v1/06-capstone-project-dev-environment.md) · [FAQ](v1/07-faq.md) · [Glossary](v1/08-glossary.md)
+Open [pre-work-setup.md](pre-work-setup.md) and work through it first, then continue to Part 2.
 
 ## Project materials
 
 | Resource | Description |
 |----------|-------------|
 | [E-Commerce PRD](prd/ecommerce-analytics.md) | The product requirements document you'll build from |
-| [Sales Data](data/sales-data.csv) | Sample dataset for the dashboard |
-
-## Prerequisites
-
-- Basic Python knowledge (pandas, simple scripts)
-- A computer running macOS or Windows
-- No prior experience with Git or AI coding tools
-
-## Getting help
-
-Try to solve it yourself first. Google the error message, or if you have Claude Code installed, ask it. If you're still stuck, post in the Teams General channel.
+| [Sales data](data/sales-data.csv) | Sample dataset for the dashboard |
 
 ## License
 
