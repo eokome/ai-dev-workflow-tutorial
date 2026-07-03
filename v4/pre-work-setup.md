@@ -24,7 +24,6 @@ Estimated time: 70–100 minutes, at your own pace. Do this part first; Part 2 (
   - [3.1 Fork the repository](#31-fork-the-repository)
   - [3.2 Clone your fork](#32-clone-your-fork)
 - [Section 4: Final verification (~10 min)](#section-4-final-verification-10-min)
-- [Troubleshooting reference](#troubleshooting-reference)
 
 ---
 
@@ -41,7 +40,7 @@ Dictation: Wispr Flow, speak your prompts to Claude Code instead of typing
 
 **See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up, which takes about 30 seconds.)
 
-> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you've already got Claude Code set up, just ask it, since it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams General channel and someone will help.
+> **If you get stuck:** Try to work the problem yourself first, that's the skill you're building. Two fixes solve most setup issues: read the error message (it usually names the problem), and open a new terminal (that alone clears most "command not found" errors right after you install a tool). If those don't do it, search the exact error, or once Claude Code is set up, paste the error and ask it to diagnose. Still stuck? Post in the Teams General channel with what you were doing, the exact error, and what you already tried.
 
 > **Heads up:** Websites and software update their interfaces regularly. A button label, sign-up flow, or menu option described here may look slightly different by the time you go through it. That's normal. Focus on the goal of each step rather than the exact clicks: once you know what a step is trying to accomplish, you can usually find the equivalent option even when the UI has moved. Read the screen, work it out, and keep going. Figuring things out on your own like this is itself a professional skill.
 
@@ -627,7 +626,7 @@ claude
 ```
 Expected output: the session banner shows `You have superpowers` near the top, which means the Superpowers plugin loaded. Type `/exit` to close the session.
 
-If any command fails with "command not found," open a new terminal and try again. If it still fails, refer to the Troubleshooting Reference at the end of this document.
+If any command fails with "command not found," open a new terminal and try again. If it still fails, read the error, ask Claude Code to help, or post in the Teams General channel.
 
 ### Granola (Claude Code connection)
 
@@ -682,154 +681,6 @@ Here's what you've just configured:
 These tools connect into one workflow: GitHub hosts your code, Git tracks changes, a `TASKS.md` file tracks your work, Cursor is where you write it, the Superpowers plugin's skills help Claude plan, and Claude Code builds alongside you. In Part 2, you'll see them work together as you plan, build, and deploy a live dashboard.
 
 > **Before you start Part 2:** If anything above isn't working, post in the Teams General channel now. It's much easier to sort out setup problems before you start building than in the middle of it.
-
----
-
-## Troubleshooting reference
-
-This section covers the most common issues people encounter during setup. For each problem, you'll find what you see (the symptom), why it happens (the cause), and how to fix it (the solution).
-
----
-
-### 1. "Command not found" after installing a tool
-
-**What you see:**
-```
-zsh: command not found: claude
-bash: git: command not found
-'python' is not recognized as an internal or external command
-```
-
-**Why it happens:** Your terminal session loaded the system PATH before the tool was installed. The PATH is a list of directories the terminal searches when you type a command. Installing a tool adds its location to the PATH, but terminals that were already open don't automatically refresh their copy of the PATH.
-
-**How to fix it:**
-1. Open a **new terminal** in Cursor: Terminal --> New Terminal. This is the fix 90% of the time.
-2. If a new terminal doesn't help, restart Cursor entirely (close and reopen the application).
-3. On macOS, you can also try: `source ~/.zshrc` or `source ~/.bashrc`
-4. If the tool is still not found after restarting, the installation may have failed silently. Re-run the install command and watch for error messages.
-
----
-
-### 2. Git asks for a password on every push or pull
-
-**What you see:** Every time you run `git push` or `git pull`, Git prompts for your username and password. Or you enter your GitHub password and it's rejected.
-
-**Why it happens:** GitHub discontinued password authentication in 2021. If Git is asking for a password, it needs a Personal Access Token (PAT) instead. Additionally, if Git isn't caching credentials, it'll ask every time.
-
-**How to fix it:**
-1. **Set up credential caching** so you only enter credentials once:
-   ```bash
-   git config --global credential.helper store
-   ```
-2. The next time Git asks for your password, enter a **Personal Access Token** instead:
-   - Go to GitHub --> Settings --> Developer settings --> Personal access tokens --> Tokens (classic)
-   - Generate a new token with `repo` permissions
-   - Use this token as your password when prompted
-3. After entering the token once, it'll be saved and Git won't ask again.
-
----
-
-### 3. Wrong Python version
-
-**What you see:**
-```
-$ python --version
-zsh: command not found: python
-```
-or
-```
-$ python --version
-Python 3.8.10
-```
-
-**Why it happens:**
-- On macOS, the plain `python` command usually doesn't exist (or, on older setups, points to an outdated Python). The python.org installer places the new version at `python3` to avoid conflicting with anything on the system.
-- On Windows, if "Add Python to PATH" wasn't checked during installation, the terminal can't find the new Python installation.
-
-**How to fix it:**
-- **macOS:** Use `python3` instead of `python`. If `python3 --version` still shows an old version, you may need to reinstall from python.org and ensure you're running the installer for 3.11+.
-- **Windows:** Reinstall Python from [python.org/downloads](https://www.python.org/downloads/). On the very first screen of the installer, check **"Add Python to PATH"** at the bottom. Then open a new terminal.
-
----
-
-### 4. Claude Code authentication failure
-
-**What you see:** Claude Code starts but can't authenticate, or the browser window doesn't open, or you see an authentication error.
-
-**Why it happens:** The authentication flow requires opening a browser window to log into your Claude account. Popup blockers, VPNs, or network restrictions can interfere. Occasionally, cached credentials expire.
-
-**How to fix it:**
-1. Run `claude auth logout` in the terminal (or `/logout` inside Claude Code) to clear any cached credentials.
-2. Run `claude` again to restart the authentication flow.
-3. When the browser opens, make sure you log in with the account that has a Pro subscription.
-4. If the browser doesn't open automatically, check for a URL in the terminal output that you can copy and paste into your browser manually.
-5. Temporarily disable popup blockers if your browser is blocking the authentication window.
-
----
-
-### 5. Cloned the wrong repository (original repo instead of your fork)
-
-**What you see:** When you try to push changes later, you get a "Permission denied" error. Or `git remote -v` shows the original repository URL instead of yours.
-
-**Why it happens:** You cloned the original repository at `LMU-ISBA/ai-dev-workflow-tutorial` instead of your fork at `[your-username]/ai-dev-workflow-tutorial`.
-
-**How to fix it:**
-1. First, check which remote you have:
-   ```bash
-   git remote -v
-   ```
-2. If the URL shows `LMU-ISBA` instead of your username, you have two options:
-   - **Option A (fix the remote):** Update the remote URL to point to your fork:
-     ```bash
-     git remote set-url origin https://github.com/[your-username]/ai-dev-workflow-tutorial.git
-     ```
-   - **Option B (start fresh):** Delete the local folder, then re-clone from your fork using the correct URL from `github.com/[your-username]/ai-dev-workflow-tutorial`.
-
----
-
-### 6. Claude Code install fails or `claude` not found
-
-**What you see:**
-```
-claude: command not found
-```
-or the install script produces an error.
-
-**Why it happens:** The installer couldn't complete (network issue, permissions), or the terminal hasn't loaded the updated PATH after installation.
-
-**How to fix it:**
-1. Open a **new terminal** in Cursor (Terminal --> New Terminal). This is the fix most of the time.
-2. If that doesn't work, try running the installer again:
-   - **macOS:** `curl -fsSL https://claude.ai/install.sh | bash`
-   - **Windows (PowerShell):** `irm https://claude.ai/install.ps1 | iex`
-3. If you're behind a corporate firewall or VPN, try disconnecting temporarily and re-running the installer.
-4. After reinstalling, open another new terminal and try `claude --version`.
-
----
-
-### 7. Superpowers plugin not loaded
-
-**What you see:** Starting Claude Code does not show `You have superpowers` in the banner, and prompts that should auto-invoke skills (like "Help me design...") don't trigger any skill announcements.
-
-**Why it happens:** The plugin install didn't finish, or it was installed mid-session so the SessionStart hook hasn't run yet. The hook only fires when a session starts.
-
-**How to fix it:**
-1. List installed plugins. Inside Claude Code, run `/plugin list`. You should see `superpowers`.
-2. If it's missing, reinstall it: `/plugin install superpowers@claude-plugins-official`
-3. Exit with `/exit` and start a fresh session. Look for `You have superpowers` in the new session's banner.
-
----
-
-### General debugging approach
-
-When something goes wrong, follow this systematic approach:
-
-1. **Read the error message carefully.** It almost always tells you what went wrong and sometimes suggests a fix.
-2. **Open a new terminal.** This fixes the majority of "command not found" issues.
-3. **Check the basics:** Are you in the right directory? Is the tool installed? Did you restart after installing?
-4. **Ask Claude Code.** Once Claude Code is working, it can diagnose most issues. Describe what you were trying to do and paste the error message.
-5. **Search online.** Copy the exact error message into a search engine. Someone has almost certainly encountered it before.
-6. **Ask for help.** Post in the Teams General channel with: what you were trying to do, the exact error message (copy and paste, don't paraphrase), and what you've already tried.
 
 ---
 
