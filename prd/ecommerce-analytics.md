@@ -316,6 +316,7 @@ The dashboard will be considered complete when:
 | M4 | Sales trend chart |
 | M5 | Category and region breakdowns |
 | M6 | Testing and refinement |
+| M7 | Deployment to Streamlit Community Cloud (public URL) |
 
 ### Phase 2 (Future)
 
