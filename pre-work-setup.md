@@ -33,14 +33,14 @@ Estimated time: 70–100 minutes, at your own pace. Do this part first; Part 2 (
 Accounts:  GitHub, Claude Pro, Granola, Wispr Flow
 Tools:     Cursor, Git, Python 3.11+, Claude Code, Superpowers plugin, Granola app
 Repo:      Fork and clone the tutorial repository
-Tracking:  A TASKS.md file in your repo (no extra account needed)
+Tracking:  A TASKS.md file you create in Part 2 (no extra account needed)
 Meetings:  Granola connected to Claude Code (for your capstone)
 Dictation: Wispr Flow, speak your prompts to Claude Code instead of typing
 ```
 
 **See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up, which takes about 30 seconds.)
 
-> **If you get stuck:** Try to work the problem yourself first, that's the skill you're building. Two fixes solve most setup issues: read the error message (it usually names the problem), and open a new terminal (that alone clears most "command not found" errors right after you install a tool). If those don't do it, search the exact error, or once Claude Code is set up, paste the error and ask it to diagnose. Still stuck? Post in the Teams General channel with what you were doing, the exact error, and what you already tried.
+> **If you get stuck:** Try to work the problem yourself first, that's the skill you're building. Two fixes solve most setup issues: read the error message (it usually names the problem), and open a new terminal (that alone clears most "command not found" errors right after you install a tool). If those don't do it, search the exact error, or once Claude Code is set up, paste the error and ask it to diagnose. Still stuck? Post in the Teams General channel, or send me a direct message on Teams, with what you were doing, the exact error, and what you already tried.
 
 > **Heads up:** Websites and software update their interfaces regularly. A button label, sign-up flow, or menu option described here may look slightly different by the time you go through it. That's normal. Focus on the goal of each step rather than the exact clicks: once you know what a step is trying to accomplish, you can usually find the equivalent option even when the UI has moved. Read the screen, work it out, and keep going. Figuring things out on your own like this is itself a professional skill.
 
@@ -67,7 +67,6 @@ Most analysts can build a model in a notebook. Fewer can turn that model into a 
 ### What you'll be able to do after Part 1
 
 - Manage code with version control (Git and GitHub)
-- Track work in a version-controlled task file (TASKS.md) that lives alongside your code
 - Use AI to accelerate building (Claude Code)
 - Plan before you build (Superpowers' brainstorming and writing-plans skills)
 - Edit code in a modern, AI-aware editor (Cursor)
@@ -630,7 +629,7 @@ claude
 ```
 Then ask Claude: `Is the Superpowers plugin installed?` Expected: Claude checks and confirms it's installed (it can run `/plugin` to verify). Type `/exit` to close the session.
 
-If any command fails with "command not found," open a new terminal and try again. If it still fails, read the error, ask Claude Code to help, or post in the Teams General channel.
+If any command fails with "command not found," open a new terminal and try again. If it still fails, read the error, ask Claude Code to help, or reach out on Teams (the General channel, or a direct message to me).
 
 ### Granola (Claude Code connection)
 
@@ -673,7 +672,6 @@ Here's what you've just configured:
 |    Superpowers ........ Skill-driven planning (Claude plugin)   |
 |    Granola app ........ AI notepad for meetings                  |
 |    Wispr Flow ......... Voice dictation for AI prompts           |
-|    TASKS.md ........... In-repo task board (created in Part 2)  |
 |                                                                |
 |  Your Repository:                                              |
 |    Fork on GitHub ..... Your remote copy                       |
@@ -682,9 +680,9 @@ Here's what you've just configured:
 +---------------------------------------------------------------+
 ```
 
-These tools connect into one workflow: GitHub hosts your code, Git tracks changes, a `TASKS.md` file tracks your work, Cursor is where you write it, the Superpowers plugin's skills help Claude plan, and Claude Code builds alongside you. In Part 2, you'll see them work together as you plan, build, and deploy a live dashboard.
+These tools connect into one workflow: GitHub hosts your code, Git tracks changes, Cursor is where you write it, the Superpowers plugin's skills help Claude plan, and Claude Code builds alongside you. In Part 2, you'll add a `TASKS.md` file to track your work, then see everything work together as you plan, build, and deploy a live dashboard.
 
-> **Before you start Part 2:** If anything above isn't working, post in the Teams General channel now. It's much easier to sort out setup problems before you start building than in the middle of it.
+> **Before you start Part 2:** If anything above isn't working, reach out on Teams now, either in the General channel or with a direct message to me. It's much easier to sort out setup problems before you start building than in the middle of it.
 
 ---
 
@@ -697,7 +695,7 @@ Part 1 is complete. You've:
 - Connected Claude Code to your Granola meeting notes for your capstone
 - Forked and cloned the tutorial repository (your working copy of the project)
 
-Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, an in-repo `TASKS.md` for tracking deliverables, Claude Code with the Superpowers plugin for turning requirements into bite-sized plans, and Granola for capturing stakeholder meetings as notes Claude Code can read. You'll use this same environment for your capstone and beyond.
+Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Claude Code with the Superpowers plugin for turning requirements into bite-sized plans, and Granola for capturing stakeholder meetings as notes Claude Code can read. You'll use this same environment for your capstone and beyond.
 
 **With setup done, you're ready for Part 2.** In the build guide, you'll put everything together:
 

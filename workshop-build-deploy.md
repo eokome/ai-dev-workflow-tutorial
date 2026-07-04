@@ -32,7 +32,7 @@
 
 This guide is self-paced. Work through it top to bottom; each section builds on the one before it, so don't skip ahead. Most people finish in about three hours, but there's no clock: do it in one sitting or split it across a few sessions, whatever fits your schedule. (The per-section time labels add up to well under three hours because they only count the hands-on steps; the rest is reading, answering brainstorming's questions, and watching Claude build.) You'll save your progress with Git as you go (Section 4), so you can stop and pick up later without losing anything.
 
-> **Didn't finish the setup yet?** Work through the [setup guide](pre-work-setup.md) first; most people finish it in under an hour. Then come back and complete the build here. Ask in the Teams General channel if you get stuck.
+> **Didn't finish the setup yet?** Work through the [setup guide](pre-work-setup.md) first; most people finish it in under an hour. Then come back and complete the build here. Ask in the Teams General channel, or send me a direct message on Teams, if you get stuck.
 
 ---
 
@@ -836,7 +836,7 @@ This handles the large majority of what goes wrong here: wrong file paths, a mis
 - **Open a new terminal.** This alone clears most "command not found" errors right after you install a tool.
 - **Check where you are.** Run `pwd`; Git and Streamlit commands only work inside your project folder.
 
-**Still stuck?** Post in the Teams General channel with what you were doing, the exact error, and what you already tried. Someone will help.
+**Still stuck?** Post in the Teams General channel, or send me a direct message on Teams, with what you were doing, the exact error, and what you already tried. Someone will help.
 
 ---
 
