@@ -42,7 +42,7 @@ By the end of this guide, you'll have taken a product requirements document thro
 
 - Set up an in-repo `TASKS.md` board of milestones drawn from the PRD, with a shared Definition of Done
 - Generated Superpowers artifacts: a design document and an implementation plan
-- Moved each milestone from To Do to Done as you built
+- Moved each milestone from To Do to Done as you build
 - Built a working Streamlit dashboard with AI-assisted coding
 - Generated a `CLAUDE.md` with `/init` so the project carries its own context
 - Committed and pushed code to GitHub with traceability from each milestone to its commits
@@ -158,7 +158,7 @@ As you work, Claude Code shows its own live checklist while it's thinking; you'l
 
 3. **Read the PRD first.** Your task board should reflect what the project needs to deliver, and that's spelled out in the product requirements document.
 
-   > **What is a PRD?** A PRD (Product Requirements Document) is a written description of what you're building and why. It defines the problem, the users, the features, and what success looks like. In professional settings, a PRD is written before any code.
+   > **What is a PRD?** A PRD (Product Requirements Document) is a written description of what you're building and why. It defines the problem, the users, the features, and what success looks like. It doesn't come out of thin air: someone (usually a product manager or business analyst) interviews the stakeholders, the people who will use the product or are paying for it, to learn what they actually need, then writes those needs down as requirements. In professional settings, the PRD is agreed on before any code is written. (For this tutorial, we've written the PRD for you so you can focus on the build; in your capstone, you'll gather requirements from your own stakeholders.)
 
    Open the [PRD](prd/ecommerce-analytics.md) and skim it (in your browser, or open `prd/ecommerce-analytics.md` in Cursor). Look at two sections in particular: **Acceptance Criteria** and **Timeline and Milestones**. The PRD already sketches the deliverables your board will track; you're not inventing them from scratch.
 
@@ -605,7 +605,7 @@ Your dashboard is built and working, so now is the moment to give your project a
 
 > **If Claude offered to merge to main after your last milestone:** hold off. After the final plan step, Superpowers may review the diff and offer to merge (the `finishing-a-development-branch` step). Let it review, but do this `/init` step first so `CLAUDE.md` is part of the merge; then merge in Section 4.5.
 
-> **What is CLAUDE.md, and why now?** `CLAUDE.md` documents your project for the AI: how to run it, where the key files live, the conventions you follow. Claude Code's `/init` command writes one for you by scanning your code. That's why you do it *now* and not at the start: at the start there's nothing to describe; now it can capture your actual project.
+> **What is CLAUDE.md, and why now?** `CLAUDE.md` documents your project for the AI: how to run it, where the key files live, the conventions you follow. Claude Code's `/init` command writes one for you by scanning your code. That's why you do it *now* and not at the start: at the start there's nothing to describe; now it can capture your actual project. It also pays off on a team: because `CLAUDE.md` is committed to the repo, every teammate's Claude Code session reads the same file, so everyone (and their AI) follows the same setup, conventions, and structure. That keeps development consistent, and a new teammate gets up to speed from one file instead of asking around.
 
 1. In Claude Code, run:
 
