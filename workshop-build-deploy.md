@@ -273,7 +273,7 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 1. In your Claude Code session (still open from Section 1), send this prompt. It points at the PRD and your milestones, and sets a few ground rules so the plan fits this project:
 
    ```
-   Help me design and plan the e-commerce sales dashboard described in @prd/ecommerce-analytics.md. I'm tracking these milestones in @TASKS.md. Structure the plan so its steps cover each one. Ground rules: work on my current feature branch (do not create a git worktree), set up a Python virtual environment in venv/ for dependencies, and keep the code simple and readable so I can follow it.
+   Help me design and plan the e-commerce sales dashboard described in @prd/ecommerce-analytics.md. I'm tracking the milestones in @TASKS.md. Structure the plan so its steps cover each one. Ground rules: work on my current feature branch (do not create a git worktree), set up a Python virtual environment in venv/ for dependencies, and keep the code simple and readable so I can follow it.
    ```
 
    > **What those ground rules mean.** You're setting three constraints on purpose, not parroting them:
