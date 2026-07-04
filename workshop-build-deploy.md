@@ -273,7 +273,12 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 1. In your Claude Code session (still open from Section 1), send this prompt. It points at the PRD and your milestones, and sets a few ground rules so the plan fits this project:
 
    ```
-   Help me design and plan the e-commerce sales dashboard described in @prd/ecommerce-analytics.md. I'm tracking the milestones in @TASKS.md. Structure the plan so its steps cover each one. Ground rules: work on my current feature branch (do not create a git worktree), set up a Python virtual environment in venv/ for dependencies, and keep the code simple and readable so I can follow it.
+   Help me design and plan the e-commerce sales dashboard described in
+   @prd/ecommerce-analytics.md. I'm tracking the milestones in @TASKS.md.
+   Structure the plan so its steps cover each one. Ground rules: work on my
+   current feature branch (do not create a git worktree), set up a Python
+   virtual environment in venv/ for dependencies, and keep the code simple
+   and readable so I can follow it.
    ```
 
    > **What those ground rules mean.** You're setting three constraints on purpose, not parroting them:
@@ -377,7 +382,11 @@ Because you pointed the planning prompt at your milestones, the plan should alre
 1. In Claude Code:
 
    ```
-   Compare the implementation plan in @docs/superpowers/plans/ against the milestones in @TASKS.md. For each milestone, note which plan steps cover it by adding "(plan steps X-Y)" after the milestone title. Then tell me if any milestone has no plan steps behind it, or if the plan does something that isn't on my board.
+   Compare the implementation plan in @docs/superpowers/plans/ against the
+   milestones in @TASKS.md. For each milestone, note which plan steps cover
+   it by adding "(plan steps X-Y)" after the milestone title. Then tell me if
+   any milestone has no plan steps behind it, or if the plan does something
+   that isn't on my board.
    ```
 
 2. Claude annotates each milestone and flags any gaps. Your To Do section should end up looking like this:
@@ -532,7 +541,8 @@ Here is what each stage means:
 1. **Commit any outstanding changes.** As it worked through the milestone, executing-plans likely committed each plan step already. This step captures anything still uncommitted (often just your `TASKS.md` update) with the milestone ID. In Claude Code:
 
    ```
-   Commit anything outstanding for TASK-1, including the TASKS.md update, with the milestone ID in the message. Make sure venv/ is in .gitignore.
+   Commit anything outstanding for TASK-1, including the TASKS.md update,
+   with the milestone ID in the message. Make sure venv/ is in .gitignore.
    ```
 
    Claude will add `venv/` to `.gitignore` (if not already there), stage the remaining changes, and create a commit with a message like "TASK-1: Set up project structure and dependencies." (If nothing's left to commit, Claude will tell you; that just means the step-by-step commits already covered it.)
@@ -552,7 +562,10 @@ Here is what each stage means:
 3. **Update your task board, then save it.** In Claude Code, close the loop by recording what you did and committing that update so it lands on GitHub with this milestone:
 
    ```
-   Update TASK-1 in TASKS.md: check off its acceptance criteria and the Definition of Done, record the commit hash, and move it from In Progress to Done. Then commit TASKS.md with a message like "TASK-1: mark done on the board" and push.
+   Update TASK-1 in TASKS.md: check off its acceptance criteria and the
+   Definition of Done, record the commit hash, and move it from In Progress
+   to Done. Then commit TASKS.md with a message like "TASK-1: mark done on
+   the board" and push.
    ```
 
    Claude edits `TASKS.md`, commits that change, and pushes it, so your board on GitHub shows TASK-1 done right away instead of trailing into the next milestone's commit.
@@ -602,7 +615,9 @@ After implementation and testing, in Claude Code:
 ```
 Commit anything outstanding for TASK-2 and push to GitHub.
 
-Then update TASK-2 in TASKS.md: check off its acceptance criteria and the Definition of Done, record the commit hash, and move it to Done. Commit that board update and push it too.
+Then update TASK-2 in TASKS.md: check off its acceptance criteria and the
+Definition of Done, record the commit hash, and move it to Done. Commit
+that board update and push it too.
 ```
 
 Replace `TASK-2` with the current milestone ID. Repeat for TASK-3, TASK-4, and so on.
@@ -623,7 +638,8 @@ streamlit run app.py
 **Option B: ask Claude Code:**
 
 ```
-Activate my virtual environment and run the Streamlit app so I can test the complete dashboard.
+Activate my virtual environment and run the Streamlit app so I can test
+the complete dashboard.
 ```
 
 Open `http://localhost:8501` and verify that all components are present: KPI scorecards, a sales trend line chart, and category/region bar charts. Press **Ctrl+C** to stop the server.
@@ -761,7 +777,9 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
 Record the deployment on your board. In Claude Code:
 
 ```
-Add a deployment milestone to TASKS.md if one doesn't exist, record the live Streamlit URL next to it, check off its criteria, and move it to Done. Then commit TASKS.md and push main to GitHub.
+Add a deployment milestone to TASKS.md if one doesn't exist, record the
+live Streamlit URL next to it, check off its criteria, and move it to
+Done. Then commit TASKS.md and push main to GitHub.
 ```
 
 You're on `main` now (the merge in Section 4.5 switched you there), so this last update commits straight to `main`. Pushing it makes your finished board visible on GitHub, which is what your instructor checks.
