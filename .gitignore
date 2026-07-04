@@ -226,5 +226,6 @@ Thumbs.db
 # Node modules (if using npm for Claude Code)
 node_modules/
 
-# Local-only dev docs (reviews, superpowers plans/specs); kept locally, not shipped to students
-docs/
+# Local-only instructor dev notes (reviews, tutorial-build specs/plans); kept locally, not shipped.
+# NOTE: do not ignore docs/ - students commit their own docs/superpowers/ specs and plans there.
+dev/
