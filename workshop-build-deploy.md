@@ -256,7 +256,7 @@ Now that you're on your feature branch, save the task board you created in Secti
 Commit TASKS.md with the message "Add task board from the PRD".
 ```
 
-From here on, your board lives in Git, and you'll commit an update to it as you finish each milestone.
+From here on, your board lives in Git. It's saved locally for now; you'll push it to GitHub in Section 4, along with your first milestone (that's when the guide covers pushing). As you finish each milestone, you'll commit an update to the board.
 
 > **Optional Pro Tip: keep your bearings on screen.** Instead of asking which branch you're on each time, you can pin a status line to the bottom of Claude Code that shows it all the time. Ask it once:
 >
@@ -275,6 +275,13 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    ```
    Help me design and plan the e-commerce sales dashboard described in @prd/ecommerce-analytics.md. I'm tracking these milestones in @TASKS.md. Structure the plan so its steps cover each one. Ground rules: work on my current feature branch (do not create a git worktree), set up a Python virtual environment in venv/ for dependencies, and keep the code simple and readable so I can follow it.
    ```
+
+   > **What those ground rules mean.** You're setting three constraints on purpose, not parroting them:
+   > - **do not create a git worktree.** A *worktree* is a separate working copy of your project. Superpowers would normally make one, but you keep things simple by staying on the single feature branch you created (more in the skills table at the end).
+   > - **set up a Python virtual environment in `venv/`.** This is a private space for this project's Python packages, so they don't clash with anything else on your machine. Claude sets it up while building, and it's explained where you use it in Section 4.1.
+   > - **keep the code simple and readable,** so you can follow what gets built, which is the whole point.
+   >
+   > Giving the AI clear constraints like these is itself a skill: you get a plan shaped to *your* project instead of its defaults.
 
 2. Watch what happens:
 
