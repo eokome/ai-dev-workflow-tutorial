@@ -571,17 +571,21 @@ Cloning downloads the repository to your computer so you can work on it locally.
 1. On your forked repository page (`github.com/[your-username]/ai-dev-workflow-tutorial`), click the green **Code** button.
 2. Make sure the **HTTPS** tab is selected (not SSH or GitHub CLI).
 3. Copy the URL. It will look like: `https://github.com/[your-username]/ai-dev-workflow-tutorial.git`
-4. In Cursor: **File** --> **New Window** (to start fresh).
-5. Click **Clone Repo** on the welcome screen.
+4. In Cursor, open a fresh window: **File** --> **Open Editor Window** (`Shift+Cmd+N` on macOS, `Shift+Ctrl+N` on Windows).
+5. Click **Clone repo** on the welcome screen. (No welcome screen? Open the Command Palette, `Cmd+Shift+P` on macOS or `Ctrl+Shift+P` on Windows, and run **Git: Clone**.)
 6. Paste the URL you copied and press **Enter/Return**.
 7. Choose a save location. **Recommended:** Create a `GitHub` folder in your home directory to keep all repositories organized:
    - macOS: `~/GitHub`
    - Windows: `C:\Users\YourName\GitHub`
 8. When prompted, click **Open** to open the cloned repository in Cursor.
 
+A full copy of your fork now lives on your computer, in the folder you chose. These local files are yours to edit; your changes stay on your machine until you push them back to GitHub (you'll do that in Part 2).
+
+> **Back up your work:** Once you push to GitHub (Part 2), your committed code is safe in the cloud. To protect everything else, including changes you haven't committed yet, put your `GitHub` folder somewhere your computer already syncs to cloud storage. Common options: iCloud Drive (macOS), OneDrive (Windows), Google Drive, or Dropbox. Then if your laptop is lost, stolen, or dies, your work is waiting for you on the next machine.
+
 > **Organizing your repositories:** Keeping all your Git repositories in a single `GitHub` folder (rather than scattering them across Desktop, Documents, and Downloads) is a small habit that pays off as you accumulate projects. It makes finding projects easy and keeps your file system clean.
 
-> **If you can't see the file explorer sidebar:** Press `Cmd+B` (macOS) or `Ctrl+B` (Windows) to toggle the sidebar. The sidebar shows your project's file and folder structure.
+> **If you can't see the file explorer sidebar in Cursor:** Press `Cmd+B` (macOS) or `Ctrl+B` (Windows) to toggle the sidebar. The sidebar shows your project's file and folder structure.
 
 > **Checkpoint:** Tutorial files are visible in Cursor's file explorer (left sidebar). You should see the `data/` and `prd/` folders, along with `README.md`, `pre-work-setup.md`, and `workshop-build-deploy.md`.
 
