@@ -78,7 +78,7 @@ If any command fails, return to the [setup guide](pre-work-setup.md) and resolve
 
 ## The professional workflow
 
-This is the workflow used at technology companies worldwide. You'll experience the entire cycle, from specification to deployment.
+This is the workflow used at technology companies worldwide. You'll experience the entire cycle, from specification to deployment. This tutorial calls the approach *skill-driven development*. A *skill* here is a small, reusable piece of expertise Claude pulls in when it fits the task; instead of jumping straight to code, you let a chain of these skills run the work in order (brainstorm the design, plan the steps, then build), so the project has a clear shape before Claude writes anything.
 
 ```
 ┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌────────┐
@@ -138,7 +138,7 @@ As you work, Claude Code shows its own live checklist while it's thinking; you'l
 
 ### Steps
 
-1. **Start Claude Code** from your project directory in Cursor's terminal:
+1. **Start Claude Code** from your project directory in Cursor's terminal. To open one, go to **Terminal** --> **New Terminal** in the menu bar (or press `` Ctrl+` ``). Then run:
 
    ```bash
    claude
@@ -267,6 +267,8 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    e. writing-plans produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically tasks involving data transformations like KPI calculations and date filtering.
 
 3. Open both files in Cursor and read through them. The design doc captures what to build; the plan captures how to build it, task by task.
+
+> **Why write this down before any code runs?** The hard part of any project is the thinking: framing the problem, choosing an approach, weighing tradeoffs. That's exactly the part it's tempting to hand to the AI, and exactly the part you learn the most from keeping. Writing the spec and plan first forces your reasoning onto the record, where you and a reviewer can see it, instead of letting it disappear into the tool. The two files you just read are that record.
 
 > **Why TDD on some tasks?** Test-driven development means writing a small test before writing the function the test exercises. You write a test that says "compute_total_sales should return $116,500 for this dataset," run it (it fails because the function doesn't exist yet), write the simplest version of the function that makes the test pass, then move on. The discipline matters because it forces you to think about behavior before implementation. For dashboard rendering, TDD doesn't earn its keep: Streamlit components are hard to test meaningfully. For data transformations, it does. The plan flags which tasks get the TDD treatment.
 
@@ -891,5 +893,7 @@ Quick-reference table of key terms used in this document.
 ## What's next
 
 You now have a complete professional workflow you can apply to your capstone project and beyond. The same cycle (brainstorm, plan, track, build, deploy) works for any technical project, whether it's a data pipeline, a machine learning model, or another dashboard. The tools and habits transfer.
+
+> **Can you explain it without Claude in the room?** Getting the dashboard to run is the easy half. The real test is whether you can walk someone through what you built and why, and defend the decisions, with the AI closed. That's what your capstone will ask of you: in advisor check-ins, stakeholder meetings, and presentations, you speak the reasoning, not just show the result. Practice it now: out loud, explain your spec, your plan, and one tradeoff you made. Any part that comes out fuzzy is the part to go back and understand, because the tools and the process here are yours to account for.
 
 > **Bring your meetings into the loop.** In Part 1 you connected Claude Code to [Granola](https://www.granola.ai) (see [Section 2.6 of the setup guide](pre-work-setup.md#26-granola-app--connect-it-to-claude-code)). You didn't need it for the dashboard, but it's built for the capstone: record your stakeholder meetings in Granola, then start a Claude Code session and ask things like *"From this week's meeting notes, what did the client ask us to change?"* or *"Draft tasks in TASKS.md from the decisions in yesterday's kickoff."* The same plan-track-build workflow, now starting from what was actually said in the room.

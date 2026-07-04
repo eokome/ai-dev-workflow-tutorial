@@ -17,6 +17,8 @@ Claude Code, the tool you'll use throughout this tutorial, is Anthropic's AI cod
 
 You're not here to become a software engineer. You're here to learn how to build things when your work calls for it: a dashboard, an automated workflow, a rough prototype. Those skills carry over whether you go into analytics, consulting, or product management.
 
+AI is an amplifier, not a shortcut. For someone with judgment, it multiplies what they can do; for someone without it, it produces confident output with no one home to check it. The workflow in this tutorial is built to grow the judgment, so the speed is worth having.
+
 You're learning this now, at the start of your career. That puts you ahead of many experienced professionals who are still adapting.
 
 | Traditional approach | AI-assisted approach |
