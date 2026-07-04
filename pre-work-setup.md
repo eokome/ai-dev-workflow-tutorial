@@ -397,7 +397,7 @@ After installation, open a **new terminal** (Terminal --> New Terminal) so the P
 
 #### Skills primer
 
-Skills are markdown files that ship with the Superpowers plugin. Each one teaches Claude how to handle a specific type of task. When you ask Claude to design something, the brainstorming skill activates. When you ask Claude to implement a plan, the executing-plans skill activates. Claude reads each skill's description at session start and matches your prompt against those descriptions to decide which skill to load. Claude announces which skill it's using, like "Using brainstorming to..." That visibility is the whole reason this works as a teaching tool.
+Skills are markdown files that ship with the Superpowers plugin. Each one teaches Claude how to handle a specific type of task. When you ask Claude to design something, the brainstorming skill activates. When you ask Claude to implement a plan, the executing-plans skill activates. Claude reads each skill's description at session start and matches your prompt against those descriptions to decide which skill to load. Each skill it loads shows up in the output as a `Skill(superpowers:<name>)` line, like `Skill(superpowers:brainstorming)`. That visibility is the whole reason this works as a teaching tool.
 
 Here's the flow you'll see in Part 2: you never call a skill by name; your plain-English prompt triggers the chain:
 
@@ -416,7 +416,7 @@ You type a plain-English prompt
    design doc)       plan)               committing)
               |
               v
-  Claude announces each step: "Using <skill> to ..."
+  Each step shows up as: Skill(superpowers:<name>)
   (that line is your cue a skill kicked in)
 ```
 
@@ -440,7 +440,7 @@ The install command below is the only time you'll type a slash command to use Su
 
 4. Exit Claude Code (`/exit`) and start it again. The Superpowers plugin loads on each new session via a SessionStart hook.
 
-5. Confirm it's installed. In the new session, ask Claude: `Is the Superpowers plugin installed?` Claude will check and confirm. (There's no startup banner to look for; Superpowers shows itself later, whenever a skill activates and Claude announces `Using <skill> to...`. You can also run `/plugin` to see your installed plugins.)
+5. Confirm it's installed. In the new session, ask Claude: `Is the Superpowers plugin installed?` Claude will check and confirm. (There's no startup banner to look for; Superpowers shows itself later, whenever a skill activates and shows up as a `Skill(superpowers:<name>)` line. You can also run `/plugin` to see your installed plugins.)
 
 > **Checkpoint:** In a Claude Code session, asking `Is the Superpowers plugin installed?` gets a yes.
 

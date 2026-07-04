@@ -268,7 +268,7 @@ From here on, your board lives in Git. It's saved locally for now; you'll push i
 
 ### 2.2 Brainstorm and plan with one prompt
 
-This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You already know the *what*: the milestones on your board. Now you give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan for the *how*. You'll see Claude announce each skill switch in the output.
+This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You already know the *what*: the milestones on your board. Now you give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan for the *how*. You'll see each skill load in the output as it activates.
 
 1. In your Claude Code session (still open from Section 1), send this prompt. It points at the PRD and your milestones, and sets a few ground rules so the plan fits this project:
 
@@ -290,21 +290,19 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
 2. Watch what happens:
 
-   a. Claude announces `Using brainstorming to design and plan...` (or similar).
+   a. Claude loads the brainstorming skill. You'll see a line like `Skill(superpowers:brainstorming)` with `Successfully loaded skill` under it. That's your cue the skill has taken over.
 
    b. Brainstorming asks you 3-5 clarifying questions, one at a time. Topics include things like which KPIs matter most, how interactive the charts should be, and what edge cases to handle. Pick the options that fit your vision. You can answer with the numbered choices or type your own preference.
 
    c. After the Q&A, brainstorming writes a design doc to `docs/superpowers/specs/YYYY-MM-DD-sales-dashboard-design.md`. Claude shows you a preview and asks if it looks right. If it does, approve it.
 
-   d. Brainstorming would normally create a git worktree at this point (an isolated copy of your working directory; see the skills table at the end of this guide). Because your prompt told it not to, it skips that and hands off directly to writing-plans. You'll see Claude announce `Handing off to writing-plans...`.
-
-   e. writing-plans produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically tasks involving data transformations like KPI calculations and date filtering.
+   d. Brainstorming hands off to writing-plans, which produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically data transformations like KPI calculations and date filtering.
 
 3. Open both files in Cursor and read through them. The design doc captures what to build; the plan captures how to build it, task by task.
 
 > **Why write this down before any code runs?** The hard part of any project is the thinking: framing the problem, choosing an approach, weighing tradeoffs. That's exactly the part it's tempting to hand to the AI, and exactly the part you learn the most from keeping. Writing the spec and plan first forces your reasoning onto the record, where you and a reviewer can see it, instead of letting it disappear into the tool. The two files you just read are that record.
 
-> **Why TDD on some tasks?** Test-driven development means writing a small test before writing the function the test exercises. You write a test that says "compute_total_sales should return $116,500 for this dataset," run it (it fails because the function doesn't exist yet), write the simplest version of the function that makes the test pass, then move on. The discipline matters because it forces you to think about behavior before implementation. For dashboard rendering, TDD doesn't earn its keep: Streamlit components are hard to test meaningfully. For data transformations, it does. The plan flags which tasks get the TDD treatment.
+> **Why TDD on some tasks?** Some plan tasks are flagged for **test-driven development (TDD)**: Claude writes a small test before the code, so the behavior is pinned down before anything is built. It's used where it pays off, on data transformations like KPI calculations and date filtering, and skipped for chart rendering, where Streamlit components are hard to test meaningfully. You'll watch a TDD task play out step by step when you build in Section 4.
 
 > **Skill handoff cheat sheet (the chain you just experienced):**
 >
@@ -317,21 +315,11 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 >      v
 > brainstorming  -> asks Qs, writes design doc, gets your approval
 >      |
->      v  (Phase 5: skipped worktree per your prompt)
+>      v  (skipped worktree per your prompt)
 > writing-plans  -> produces plan with TDD-flagged tasks
 > ```
 >
-> When you start Section 4 by saying "Let's implement TASK-1," the chain extends:
->
-> ```
-> executing-plans -> task by task: TDD (where flagged) -> implement -> commit -> push
->      |
->      v  (after the final task, automatically:)
-> requesting-code-review -> reviews the diff
-> finishing-a-development-branch -> suggests merging to main
-> ```
->
-> You'll see Claude announce each handoff. If you ever lose track of where you are in the chain, scroll up and look for the most recent `Using <skill> to...` line.
+> In Section 4 the chain continues: `executing-plans` builds task by task, then `requesting-code-review` and `finishing-a-development-branch` wrap up. Each skill shows up as a `Skill(superpowers:<name>)` line, so if you lose track, scroll up to the most recent one.
 
 **Checkpoint:** You have two new files: a design doc in `docs/superpowers/specs/` and an implementation plan in `docs/superpowers/plans/`. Both are committed to your feature branch (Superpowers commits the design doc automatically; the plan commit may be combined with the first implementation task).
 
@@ -451,7 +439,7 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
    Let's work on TASK-1. Move it to the In Progress section of TASKS.md, then implement the plan steps it covers.
    ```
 
-   Claude will recognize this as an implementation task and auto-invoke `executing-plans`. You'll see `Using executing-plans to...` in the output. The skill reads the plan and works through the steps under this milestone, one at a time.
+   Claude will recognize this as an implementation task and auto-invoke `executing-plans`. You'll see `Skill(superpowers:executing-plans)` in the output. The skill reads the plan and works through the steps under this milestone, one at a time.
 
    > **What you'll see during a TDD step:** For plan steps flagged as test-driven (typically data-transformation steps like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit. For non-TDD steps (chart rendering, page layout), it'll skip straight to implementation and commit. A single milestone may contain several such steps. Watch the test output: seeing red turn green is one of the more satisfying parts of the build.
 
