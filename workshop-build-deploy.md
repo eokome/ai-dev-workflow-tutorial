@@ -654,13 +654,13 @@ Your feature branch contains all the implementation work. Now you'll bring those
 >
 > This is why feature branches are valuable; they let you develop freely without risking the stable `main` branch. When you're confident your work is complete, you merge once and know that `main` stays reliable.
 
-1. **Confirm your current branch.** In Claude Code:
+1. **Confirm your branch and a clean slate.** In Claude Code:
 
    ```
-   Which git branch am I on?
+   Which git branch am I on, and are there any uncommitted changes?
    ```
 
-   You should be on your feature branch (e.g., `feature/sales-dashboard`).
+   You should be on your feature branch (e.g., `feature/sales-dashboard`) with nothing uncommitted. If Claude finds stray changes (a leftover `TASKS.md` edit is the usual suspect), have it commit them now, with their own message, rather than letting them tangle into the merge. Claude tends to run this same check on its own before merging; now you know why.
 
 2. **Merge into main.** If Claude is still offering to merge from the end of your last milestone (the `finishing-a-development-branch` offer you held off on in Section 4.4), just accept it:
 
@@ -682,7 +682,7 @@ Your feature branch contains all the implementation work. Now you'll bring those
    Push main to GitHub
    ```
 
-4. **Verify on GitHub:** Open your repository in a browser, select the **main** branch from the branch dropdown, and confirm all dashboard files (app.py, requirements.txt, data directory, etc.) are present.
+4. **Verify on GitHub:** Open your repository in a browser (`github.com/[your-username]/[your-repo]`). Just above the list of files, on the left, is a button showing the current branch name with a small branch icon next to it. Click that button and choose **main** from the dropdown (it may already be selected). Then confirm all the dashboard files are in the file list: `app.py`, `requirements.txt`, the `data` directory, and so on.
 
 **Checkpoint:** The `main` branch on GitHub contains all your dashboard code.
 
