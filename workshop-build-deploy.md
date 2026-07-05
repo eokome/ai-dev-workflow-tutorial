@@ -428,6 +428,8 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    > **What happens during implementation:** Claude reads the task and its acceptance criteria, consults the specification and plan, then writes the code. Watch the output; you'll see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
+   > **How Claude moves to the next task:** Inline execution pauses at a checkpoint after each plan step: Claude reports what it built (and whether tests passed), then asks if it should continue. Skim the report, and if it matches what you expected, tell it to keep going. Repeat until it finishes the steps under TASK-1. If it offers to roll straight into the next milestone's steps, hold it there; you drive milestone-by-milestone from your board, and you'll test the dashboard first (step 3 below).
+
 2. In Claude Code, ask Claude to explain what it created:
 
    ```
@@ -455,11 +457,11 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    > **Key Concept: Virtual Environments.** The `source venv/bin/activate` command activates a **virtual environment**, an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. The virtual environment ensures that your dashboard's dependencies (Streamlit, Pandas, Plotly) are contained within this project. You'll see `(venv)` at the beginning of your terminal prompt when the environment is active.
 
-4. Open `http://localhost:8501` in your browser. You should see the beginnings of your dashboard: likely a title and confirmation that the data loaded.
+4. When the server starts, Streamlit prints a **Local URL** in the terminal, for example `http://localhost:8501` (the port number can differ if something else on your machine is already using that one). Click whatever link it printed to open it in your browser: in Cursor's terminal, hold `Cmd` (macOS) or `Ctrl` (Windows) and click the URL. Streamlit often opens it for you automatically. You should see the beginnings of your dashboard: likely a title and confirmation that the data loaded.
 
 5. When done reviewing, press **Ctrl+C** in the terminal to stop the Streamlit server.
 
-**Checkpoint:** The dashboard runs locally at `http://localhost:8501` without errors.
+**Checkpoint:** The dashboard runs locally at the Local URL Streamlit printed, without errors.
 
 ### 4.2 Commit, push, and update TASKS.md
 
@@ -615,7 +617,7 @@ Activate my virtual environment and run the Streamlit app so I can test
 the complete dashboard.
 ```
 
-Open `http://localhost:8501` and verify that all components are present: KPI scorecards, a sales trend line chart, and category/region bar charts. Press **Ctrl+C** to stop the server.
+Open whatever Local URL Streamlit prints in the terminal (for example `http://localhost:8501`) and verify that all components are present: KPI scorecards, a sales trend line chart, and category/region bar charts. Press **Ctrl+C** to stop the server.
 
 **Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and commits recorded. Only a deployment milestone (if you have one) remains in To Do.
 
