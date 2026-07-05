@@ -284,7 +284,7 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    ```
 
    > **What those ground rules mean.** You're setting these constraints on purpose, not parroting them:
-   > - **leave deployment out of the plan.** Deployment happens from the `main` branch after your work is merged, and you'll drive it yourself, step by step, in Section 5. If the plan included deployment, Claude would try to walk you through deploying early, from the wrong branch.
+   > - **leave deployment out of the plan.** Deployment happens from the `main` branch after your work is merged, and you'll drive it yourself, step by step, in Section 5. If the plan included deployment, Claude would try to walk you through deploying early, from the wrong branch. This rule generalizes to any project you plan with an AI: a step that publishes your work or needs your accounts (deploying an app, releasing a version, sending anything to real users) belongs in your hands, not in the AI's plan. The AI builds; you decide when something goes live.
    > - **do not create a git worktree.** A *worktree* is a separate working copy of your project. Superpowers would normally make one, but you keep things simple by staying on the single feature branch you created (more in the skills table at the end).
    > - **set up a Python virtual environment in `venv/`.** This is a private space for this project's Python packages, so they don't clash with anything else on your machine. Claude sets it up while building, and it's explained where you use it in Section 4.1.
    > - **keep the code simple and readable,** so you can follow what gets built, which is the whole point.
@@ -595,6 +595,8 @@ isn't already. Commit that board update and push it too.
 > Hold off on deployment. Move that milestone back to To Do; I'll deploy
 > myself from main after we merge.
 > ```
+>
+> This is the ground rule from Section 2.2 in action: the AI builds, but you decide when your work goes live.
 
 > **Pro Tip:** Watch Claude's output as it works each milestone. You'll see files being created, imports being added, and functions being written. This is a good way to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. You can reuse these patterns in your capstone.
 
