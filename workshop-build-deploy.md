@@ -275,16 +275,17 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    ```
    Help me design and plan the e-commerce sales dashboard described in
    @prd/ecommerce-analytics.md. I'm tracking the milestones in @TASKS.md.
-   Structure the plan so its steps cover each one, except deployment: leave
-   that milestone out of the plan, because I'll deploy it myself from the
-   main branch at the end. Ground rules: work on my current feature branch
-   (do not create a git worktree), set up a Python virtual environment in
-   venv/ for dependencies, and keep the code simple and readable so I can
-   follow it.
+   Structure the plan so its steps cover each one. Make deployment the
+   final step of the plan, marked as mine to execute: I'll deploy it
+   myself from the main branch after we merge, so the plan should stop
+   there and hand off to me. Ground rules: work on my current feature
+   branch (do not create a git worktree), set up a Python virtual
+   environment in venv/ for dependencies, and keep the code simple and
+   readable so I can follow it.
    ```
 
    > **What those ground rules mean.** You're setting these constraints on purpose, not parroting them:
-   > - **leave deployment out of the plan.** Deployment happens from the `main` branch after your work is merged, and you'll drive it yourself, step by step, in Section 5. If the plan included deployment, Claude would try to walk you through deploying early, from the wrong branch. This rule generalizes to any project you plan with an AI: a step that publishes your work or needs your accounts (deploying an app, releasing a version, sending anything to real users) belongs in your hands, not in the AI's plan. The AI builds; you decide when something goes live.
+   > - **deployment is planned, but marked as yours.** Real plans include deployment; what a professional team controls is who executes it. Publishing needs your accounts (GitHub, Streamlit) and a go/no-go call, so the plan carries the step but stops and hands it to you: you'll run it yourself in Section 5, from `main`, after the merge. This is a prompt pattern worth reusing on any AI-planned project: mark the steps that publish work or need your credentials as human-executed.
    > - **do not create a git worktree.** A *worktree* is a separate working copy of your project. Superpowers would normally make one, but you keep things simple by staying on the single feature branch you created (more in the skills table at the end).
    > - **set up a Python virtual environment in `venv/`.** This is a private space for this project's Python packages, so they don't clash with anything else on your machine. Claude sets it up while building, and it's explained where you use it in Section 4.1.
    > - **keep the code simple and readable,** so you can follow what gets built, which is the whole point.
@@ -301,7 +302,7 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    The spec looks good. Go ahead and write the implementation plan.
    ```
 
-   Claude hands off to writing-plans (you'll see a `Skill(superpowers:writing-plans)` line with `Successfully loaded skill` under it, just like the brainstorming skill earlier), which produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. Open it the same way (expand `docs`, then `superpowers`, then `plans`, then preview it) and read it. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically data transformations like KPI calculations and date filtering. The design doc captures *what* to build; the plan captures *how* to build it, task by task.
+   Claude hands off to writing-plans (you'll see a `Skill(superpowers:writing-plans)` line with `Successfully loaded skill` under it, just like the brainstorming skill earlier), which produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. Open it the same way (expand `docs`, then `superpowers`, then `plans`, then preview it) and read it. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically data transformations like KPI calculations and date filtering. Also check the plan's last step: it should be deployment, marked as yours to execute from `main` after the merge, exactly as you asked in the prompt. The design doc captures *what* to build; the plan captures *how* to build it, task by task.
 
 5. **Choose how Claude will execute the plan.** After the plan is written, Claude asks one last question before any code runs: how do you want it to execute the plan? You'll usually see two options:
 
@@ -589,11 +590,11 @@ isn't already. Commit that board update and push it too.
 
 > **Handy: accept Claude's next-prompt suggestions.** As you repeat this cycle, Claude Code often shows a dimmed suggestion in the input box, its guess at what you might type next (like committing, or starting the next milestone). Press the **right arrow** (or **Tab**) to drop it into your prompt, then **Enter** to send it. To write your own instead, just start typing and the suggestion disappears. It's on by default; you can turn it off in `/config` if you find it distracting.
 
-> **Leave the deployment milestone in To Do (if you have one).** This tutorial deploys from `main` after your work is merged: that's Streamlit Cloud's default branch and the professional pattern, and Section 5 walks you through it click by click. So don't start a deployment milestone here. Claude may still offer to deploy for you (it's technically possible from a feature branch); if it does, or if it has already moved the milestone to In Progress, rein it in:
+> **Leave the deployment milestone in To Do (if you have one).** The plan's deployment step is gated on you: you marked it as yours in the Section 2.2 prompt, so this build loop covers the implementation milestones only. Claude may still offer to start deployment for you; if it does, or if it has already moved the milestone to In Progress, hold the gate:
 >
 > ```
-> Hold off on deployment. Move that milestone back to To Do; I'll deploy
-> myself from main after we merge.
+> Deployment is my step. Move that milestone back to To Do; I'll run it
+> from main after we merge.
 > ```
 >
 > This is the ground rule from Section 2.2 in action: the AI builds, but you decide when your work goes live.
@@ -693,7 +694,7 @@ Your feature branch contains all the implementation work. Now you'll bring those
 
 > **Why This Matters:** Building something that only runs on your laptop doesn't deliver value. Deployment makes your work accessible to stakeholders: a manager, a client, or your capstone advisor can open a URL and see your dashboard without installing Python or cloning a repository. Going from analysis to a shared, accessible output is a skill most graduates lack. Many people can build charts in a Jupyter notebook; far fewer can deploy an interactive dashboard that stakeholders actually use.
 
-Deployment is the final stage of the professional workflow. It transforms your local project into a publicly accessible application.
+Deployment is the final stage of the professional workflow. It transforms your local project into a publicly accessible application. It's also the handoff you reserved back in Section 2.2: the plan's final step, marked as yours, executed here by you.
 
 ```
 ┌──────────────┐     Streamlit     ┌──────────────┐     Public URL    ┌──────────────┐
@@ -716,7 +717,7 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
    > **First-time sign-in:** If this is your first time using Streamlit Cloud, the process involves a few extra steps after clicking "Continue with GitHub":
    > - You'll authorize Streamlit on GitHub (email-only permissions), then **verify your email** by entering a 6-digit code sent to your email address.
    > - After verification, you'll authorize Streamlit a second time with broader GitHub permissions (repository access, webhooks).
-   > - Finally, you'll fill out a short account setup form (name, functional area — choose **Student**, development stage, and country). Click **Continue** to finish.
+   > - Finally, you'll fill out a short account setup form: name, functional area (choose **Student**), development stage, and country. Click **Continue** to finish.
    >
    > On subsequent sign-ins, you'll skip straight to the dashboard.
 
@@ -729,7 +730,7 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
    | **Repository** | `[your-username]/ai-dev-workflow-tutorial` |
    | **Branch** | `main` |
    | **Main file path** | `app.py` (or wherever your Streamlit entry point is) |
-   | **App URL** (optional) | A custom slug like `sales-dashboard-yourname` — this determines the first part of your public URL |
+   | **App URL** (optional) | A custom slug like `sales-dashboard-yourname`; this determines the first part of your public URL |
 
 5. Click **Deploy** and wait 1-2 minutes. Streamlit Cloud installs your dependencies (from `requirements.txt`), runs your app, and makes it available at a public URL.
 
@@ -745,13 +746,16 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
 
 ### 5.2 Update your task board
 
-Record the deployment on your board. In Claude Code:
+Record the deployment on your board. Give Claude the live URL and let it finish the bookkeeping. In Claude Code:
 
 ```
-Add a deployment milestone to TASKS.md if one doesn't exist, record the
-live Streamlit URL next to it, check off its criteria, and move it to
-Done. Then commit TASKS.md and push main to GitHub.
+The dashboard is live at [paste your URL]. Record the URL next to the
+deployment milestone in TASKS.md (add the milestone if it's missing),
+check off its criteria, and move it to Done. Then commit TASKS.md and
+push main to GitHub.
 ```
+
+You can also ask Claude to add the live URL to your README, which makes it easy to find when you submit.
 
 You're on `main` now (the merge in Section 4.5 switched you there), so this last update commits straight to `main`. Pushing it makes your finished board visible on GitHub, which is what your instructor checks.
 
