@@ -22,6 +22,7 @@
   - [4.5 Merge to main](#45-merge-to-main)
 - [Section 5: Deploy (~15 min)](#section-5-deploy-15-min)
 - [Section 6: Final verification checklist](#section-6-final-verification-checklist)
+- [Section 7: Submit your work](#section-7-submit-your-work)
 - [Troubleshooting](#troubleshooting)
 - [Other Superpowers skills you'll meet later](#other-superpowers-skills-youll-meet-later)
 - [Glossary](#glossary)
@@ -793,6 +794,31 @@ Before submitting, walk through every item below. Each category corresponds to a
 
 ---
 
+## Section 7: Submit your work
+
+Every item above checked? Then you're done building; the last step is turning it in.
+
+**Due: Wednesday, July 15, 2026 at 11:59 PM.** Submit the following to Brightspace under the **AI Dev Workflow Tutorial** assignment:
+
+1. **GitHub repository link:** your public repo URL (e.g., `https://github.com/yourusername/ai-dev-workflow-tutorial`)
+
+2. **Streamlit dashboard link:** your live deployed URL (e.g., `https://sales-dashboard-yourname.streamlit.app`)
+
+3. **Your completed `TASKS.md`:** because the board lives in your repo. Just make sure the final `TASKS.md` on your `main` branch shows:
+   - Every implementation milestone in the Done section, acceptance criteria checked
+   - A commit hash recorded next to each done milestone
+   - The Definition of Done checked off
+
+   Your instructor can open `TASKS.md` on GitHub and run `git log -- TASKS.md` to see how the work progressed; that history is your evidence.
+
+Make sure your `TASKS.md`, `prd/`, and `docs/superpowers/` files are included in your repository.
+
+**Checkpoint:** Both links are submitted on Brightspace: your repo opens on GitHub, and your dashboard loads at its public URL.
+
+> **After you submit: the walk-through.** Submitting the links isn't the last step; explaining the work is. In your second 1:1, you'll walk your instructor through what you built and how, live, with follow-up questions: why the work happened on a feature branch, what the design doc changed about what you built, what a commit message with a milestone ID makes possible, why the merge came before the deploy. This isn't a quiz to cram for, and it isn't a hunt for AI use (AI was expected everywhere in this tutorial). It checks the one thing a polished repo can't show: that the reasoning behind it is yours. Your prep material is already on the record. Reread your spec, your plan, your board, and your commit history, and make sure you can tell the story of each out loud with the tool closed. If you can, you're ready, both for this meeting and for the capstone, where you'll do the same thing in front of stakeholders.
+
+---
+
 ## The complete workflow: what you accomplished
 
 ```
@@ -812,25 +838,6 @@ In this guide, you practiced five professional skills:
 5. **Deployment:** You turned a local script into a live application with a shareable URL.
 
 > **For Your Career:** This workflow scales. Whether you're building a data pipeline, a dashboard, or a machine learning model, the pattern is the same: brainstorm, plan, track, build, deploy. You now have hands-on experience with the full cycle. In interviews, you can describe not just what you built but how you built it, and that process awareness matters to hiring managers.
-
----
-
-## What to submit
-
-**Due: Wednesday, July 15, 2026 at 11:59 PM.** Submit the following to Brightspace under the **AI Dev Workflow Tutorial** assignment:
-
-1. **GitHub repository link:** your public repo URL (e.g., `https://github.com/yourusername/ai-dev-workflow-tutorial`)
-
-2. **Streamlit dashboard link:** your live deployed URL (e.g., `https://sales-dashboard-yourname.streamlit.app`)
-
-3. **Your completed `TASKS.md`:** because the board lives in your repo, there's no screenshot to submit. Just make sure the final `TASKS.md` on your `main` branch shows:
-   - Every implementation milestone in the Done section, acceptance criteria checked
-   - A commit hash recorded next to each done milestone
-   - The Definition of Done checked off
-
-   Your instructor can open `TASKS.md` on GitHub and run `git log -- TASKS.md` to see how the work progressed; that history is your evidence.
-
-Make sure your `TASKS.md`, `prd/`, and `docs/superpowers/` files are included in your repository.
 
 ---
 
