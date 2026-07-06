@@ -14,12 +14,6 @@ Every milestone must meet all of the following before moving to Done:
 
 ## To Do
 
-### TASK-2: Data loading and basic structure
-Load `data/sales-data.csv` into a Pandas DataFrame and validate its structure.
-- [ ] CSV loads without errors and columns match the spec (date, order_id, product, category, region, quantity, unit_price, total_amount)
-- [ ] Date column is parsed as a proper date type
-- [ ] Row count matches expected 482 records
-
 ### TASK-3: KPI cards implementation
 Display Total Sales and Total Orders as prominent KPI cards.
 - [ ] Total Sales displayed as formatted currency (~$116,500)
@@ -64,3 +58,9 @@ Set up the Python project structure and install required dependencies (Streamlit
 - [x] Project folder structure created (e.g. `app.py`, `data/`)
 - [x] Dependencies installed and importable (streamlit, plotly, pandas)
 - [x] `streamlit run app.py` launches a blank/placeholder app without errors
+
+### TASK-2: Data loading and basic structure
+Load `data/sales-data.csv` into a Pandas DataFrame and validate its structure.
+- [x] CSV loads without errors and columns match the spec (date, order_id, product, category, region, quantity, unit_price, total_amount)
+- [x] Date column is parsed as a proper date type
+- [x] Row count matches expected 482 records
