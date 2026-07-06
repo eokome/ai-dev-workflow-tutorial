@@ -14,12 +14,6 @@ Every milestone must meet all of the following before moving to Done:
 
 ## To Do
 
-### TASK-5: Category and region breakdowns
-Build bar charts showing sales by product category and by region.
-- [ ] Category bar chart shows all 5 categories, sorted highest to lowest, with tooltips
-- [ ] Region bar chart shows all 4 regions, sorted highest to lowest, with tooltips
-- [ ] Electronics appears as the top category, matching PRD expectations
-
 ### TASK-6: Testing and refinement
 Verify the dashboard against the PRD's acceptance criteria and polish for presentation.
 - [ ] Dashboard loads within 5 seconds and charts render within 2 seconds
@@ -64,3 +58,9 @@ Build an interactive line chart showing sales over time.
 - [x] Line chart renders with time on the X-axis and sales amount on the Y-axis
 - [x] Tooltips show exact values on hover
 - [x] Chart data matches expected totals from the CSV
+
+### TASK-5: Category and region breakdowns
+Build bar charts showing sales by product category and by region.
+- [x] Category bar chart shows all 5 categories, sorted highest to lowest, with tooltips
+- [x] Region bar chart shows all 4 regions, sorted highest to lowest, with tooltips
+- [x] Electronics appears as the top category, matching PRD expectations
