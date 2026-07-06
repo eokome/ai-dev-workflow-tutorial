@@ -15,6 +15,7 @@ def load_data(path="data/sales-data.csv"):
     if missing:
         st.error(f"sales-data.csv is missing required columns: {', '.join(missing)}")
         st.stop()
+    # pandas 3.x changed pd.to_datetime's default resolution; pin to ns so the dtype is stable
     df["date"] = pd.to_datetime(df["date"]).astype('datetime64[ns]')
     return df
 
@@ -62,7 +63,10 @@ def main():
 
     st.subheader("Sales Trend Over Time")
     monthly = compute_monthly_trend(df)
-    trend_fig = px.line(monthly, x="month", y="total_amount", markers=True)
+    trend_fig = px.line(
+        monthly, x="month", y="total_amount", markers=True,
+        labels={"month": "Month", "total_amount": "Sales ($)"},
+    )
     trend_fig.update_layout(xaxis_title="Month", yaxis_title="Sales ($)")
     st.plotly_chart(trend_fig, use_container_width=True)
 
@@ -70,13 +74,19 @@ def main():
     with col3:
         st.subheader("Sales by Category")
         category_df = compute_category_breakdown(df)
-        category_fig = px.bar(category_df, x="category", y="total_amount")
+        category_fig = px.bar(
+            category_df, x="category", y="total_amount",
+            labels={"category": "Category", "total_amount": "Sales ($)"},
+        )
         category_fig.update_layout(xaxis_title="Category", yaxis_title="Sales ($)")
         st.plotly_chart(category_fig, use_container_width=True)
     with col4:
         st.subheader("Sales by Region")
         region_df = compute_region_breakdown(df)
-        region_fig = px.bar(region_df, x="region", y="total_amount")
+        region_fig = px.bar(
+            region_df, x="region", y="total_amount",
+            labels={"region": "Region", "total_amount": "Sales ($)"},
+        )
         region_fig.update_layout(xaxis_title="Region", yaxis_title="Sales ($)")
         st.plotly_chart(region_fig, use_container_width=True)
 
