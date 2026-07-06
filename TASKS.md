@@ -35,6 +35,13 @@ Set up the Python project structure and install required dependencies (Streamlit
 - [x] Dependencies installed and importable (streamlit, plotly, pandas)
 - [x] `streamlit run app.py` launches a blank/placeholder app without errors
 
+Definition of Done:
+- [x] Acceptance criteria for the milestone are met
+- [x] App runs locally with `streamlit run app.py`
+- [x] Changes are committed with the milestone ID in the commit message
+
+Commits: `0ae1d87`, `53ca4a6`
+
 ### TASK-2: Data loading and basic structure
 Load `data/sales-data.csv` into a Pandas DataFrame and validate its structure.
 - [x] CSV loads without errors and columns match the spec (date, order_id, product, category, region, quantity, unit_price, total_amount)
