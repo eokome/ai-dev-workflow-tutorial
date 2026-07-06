@@ -14,12 +14,6 @@ Every milestone must meet all of the following before moving to Done:
 
 ## To Do
 
-### TASK-4: Sales trend chart
-Build an interactive line chart showing sales over time.
-- [ ] Line chart renders with time on the X-axis and sales amount on the Y-axis
-- [ ] Tooltips show exact values on hover
-- [ ] Chart data matches expected totals from the CSV
-
 ### TASK-5: Category and region breakdowns
 Build bar charts showing sales by product category and by region.
 - [ ] Category bar chart shows all 5 categories, sorted highest to lowest, with tooltips
@@ -64,3 +58,9 @@ Display Total Sales and Total Orders as prominent KPI cards.
 - [x] Total Sales displayed as formatted currency (~$116,500)
 - [x] Total Orders displayed as a formatted count (482)
 - [x] KPIs are visually prominent at the top of the dashboard
+
+### TASK-4: Sales trend chart
+Build an interactive line chart showing sales over time.
+- [x] Line chart renders with time on the X-axis and sales amount on the Y-axis
+- [x] Tooltips show exact values on hover
+- [x] Chart data matches expected totals from the CSV
