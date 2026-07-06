@@ -48,6 +48,13 @@ Load `data/sales-data.csv` into a Pandas DataFrame and validate its structure.
 - [x] Date column is parsed as a proper date type
 - [x] Row count matches expected 482 records
 
+Definition of Done:
+- [x] Acceptance criteria for the milestone are met
+- [x] App runs locally with `streamlit run app.py`
+- [x] Changes are committed with the milestone ID in the commit message
+
+Commits: `b6d9e1a`
+
 ### TASK-3: KPI cards implementation
 Display Total Sales and Total Orders as prominent KPI cards.
 - [x] Total Sales displayed as formatted currency (~$116,500)
