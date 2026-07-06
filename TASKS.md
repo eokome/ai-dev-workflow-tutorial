@@ -14,11 +14,6 @@ Every milestone must meet all of the following before moving to Done:
 
 ## To Do
 
-### TASK-7: Deployment to Streamlit Community Cloud
-Deploy the finished dashboard to Streamlit Community Cloud with a public URL.
-- [ ] App is deployed and reachable via a shareable public URL
-- [ ] Deployed app matches local behavior (no missing data or broken charts)
-
 ---
 
 ## In Progress
@@ -78,3 +73,17 @@ Verify the dashboard against the PRD's acceptance criteria and polish for presen
 - [x] Dashboard loads within 5 seconds and charts render within 2 seconds
 - [x] No errors or warnings appear when running the app
 - [x] Layout and labels are professional and suitable for an executive presentation
+
+### TASK-7: Deployment to Streamlit Community Cloud
+Deploy the finished dashboard to Streamlit Community Cloud with a public URL.
+- [x] App is deployed and reachable via a shareable public URL
+- [x] Deployed app matches local behavior (no missing data or broken charts)
+
+Deployed URL: https://ai-dev-workflow-tutorial-gvk5cnuncld3awjq6ru8f4.streamlit.app/
+
+Definition of Done:
+- [x] Acceptance criteria for the milestone are met
+- [x] App runs locally with `streamlit run app.py`
+- [x] Changes are committed with the milestone ID in the commit message
+
+Commits: `e066659` (deployed commit)
