@@ -14,12 +14,6 @@ Every milestone must meet all of the following before moving to Done:
 
 ## To Do
 
-### TASK-1: Environment setup and project initialization
-Set up the Python project structure and install required dependencies (Streamlit, Plotly, Pandas).
-- [ ] Project folder structure created (e.g. `app.py`, `data/`)
-- [ ] Dependencies installed and importable (streamlit, plotly, pandas)
-- [ ] `streamlit run app.py` launches a blank/placeholder app without errors
-
 ### TASK-2: Data loading and basic structure
 Load `data/sales-data.csv` into a Pandas DataFrame and validate its structure.
 - [ ] CSV loads without errors and columns match the spec (date, order_id, product, category, region, quantity, unit_price, total_amount)
@@ -65,4 +59,8 @@ _(none yet)_
 
 ## Done
 
-_(none yet)_
+### TASK-1: Environment setup and project initialization
+Set up the Python project structure and install required dependencies (Streamlit, Plotly, Pandas).
+- [x] Project folder structure created (e.g. `app.py`, `data/`)
+- [x] Dependencies installed and importable (streamlit, plotly, pandas)
+- [x] `streamlit run app.py` launches a blank/placeholder app without errors
