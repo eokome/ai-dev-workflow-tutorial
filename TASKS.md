@@ -14,12 +14,6 @@ Every milestone must meet all of the following before moving to Done:
 
 ## To Do
 
-### TASK-3: KPI cards implementation
-Display Total Sales and Total Orders as prominent KPI cards.
-- [ ] Total Sales displayed as formatted currency (~$116,500)
-- [ ] Total Orders displayed as a formatted count (482)
-- [ ] KPIs are visually prominent at the top of the dashboard
-
 ### TASK-4: Sales trend chart
 Build an interactive line chart showing sales over time.
 - [ ] Line chart renders with time on the X-axis and sales amount on the Y-axis
@@ -64,3 +58,9 @@ Load `data/sales-data.csv` into a Pandas DataFrame and validate its structure.
 - [x] CSV loads without errors and columns match the spec (date, order_id, product, category, region, quantity, unit_price, total_amount)
 - [x] Date column is parsed as a proper date type
 - [x] Row count matches expected 482 records
+
+### TASK-3: KPI cards implementation
+Display Total Sales and Total Orders as prominent KPI cards.
+- [x] Total Sales displayed as formatted currency (~$116,500)
+- [x] Total Orders displayed as a formatted count (482)
+- [x] KPIs are visually prominent at the top of the dashboard

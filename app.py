@@ -18,12 +18,22 @@ def load_data(path="data/sales-data.csv"):
     return df
 
 
+def compute_kpis(df):
+    total_sales = df["total_amount"].sum()
+    total_orders = len(df)
+    return total_sales, total_orders
+
+
 def main():
     st.set_page_config(page_title="ShopSmart Sales Dashboard", layout="wide")
     st.title("ShopSmart Sales Dashboard")
 
     df = load_data()
-    st.write(f"Loaded {len(df)} rows.")
+
+    total_sales, total_orders = compute_kpis(df)
+    col1, col2 = st.columns(2)
+    col1.metric("Total Sales", f"${total_sales:,.0f}")
+    col2.metric("Total Orders", f"{total_orders:,}")
 
 
 if __name__ == "__main__":
