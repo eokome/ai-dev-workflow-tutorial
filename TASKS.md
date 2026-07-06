@@ -14,12 +14,6 @@ Every milestone must meet all of the following before moving to Done:
 
 ## To Do
 
-### TASK-6: Testing and refinement
-Verify the dashboard against the PRD's acceptance criteria and polish for presentation.
-- [ ] Dashboard loads within 5 seconds and charts render within 2 seconds
-- [ ] No errors or warnings appear when running the app
-- [ ] Layout and labels are professional and suitable for an executive presentation
-
 ### TASK-7: Deployment to Streamlit Community Cloud
 Deploy the finished dashboard to Streamlit Community Cloud with a public URL.
 - [ ] App is deployed and reachable via a shareable public URL
@@ -64,3 +58,9 @@ Build bar charts showing sales by product category and by region.
 - [x] Category bar chart shows all 5 categories, sorted highest to lowest, with tooltips
 - [x] Region bar chart shows all 4 regions, sorted highest to lowest, with tooltips
 - [x] Electronics appears as the top category, matching PRD expectations
+
+### TASK-6: Testing and refinement
+Verify the dashboard against the PRD's acceptance criteria and polish for presentation.
+- [x] Dashboard loads within 5 seconds and charts render within 2 seconds
+- [x] No errors or warnings appear when running the app
+- [x] Layout and labels are professional and suitable for an executive presentation
